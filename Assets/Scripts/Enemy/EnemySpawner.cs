@@ -1,19 +1,31 @@
+using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawner
+public class EnemySpawner : MonoBehaviour
 {
-    private Vector2 spawnPosition;
-    private Path path;
+    [SerializeField] private Transform spawnPosition;
+    [SerializeField] private Path path;
+    [SerializeField] private Transform poolTransform;
 
-    public EnemySpawner(Vector2 spawnPosition, Path path)
-    {
-        this.spawnPosition = spawnPosition;
-        this.path = path;
-    }
+    private Dictionary<GameObject, GameObjectPool> pools = new();
 
     public void SpawnEnemy(EnemyData enemyData)
     {
-        Enemy enemy = Object.Instantiate(enemyData.Prefab, spawnPosition, Quaternion.identity).GetComponent<Enemy>();
+        Enemy enemy = GetPool(enemyData.Prefab).GetObject().GetComponent<Enemy>();
+        enemy.transform.position = spawnPosition.position;
         enemy.Setup(path);
+        enemy.gameObject.SetActive(true);
+    }
+
+    private GameObjectPool GetPool(GameObject prefab)
+    {
+        if (pools.TryGetValue(prefab, out GameObjectPool pool))
+        {
+            return pool;
+        }
+
+        GameObjectPool newPool = new GameObjectPool(prefab, poolTransform, 3);
+        pools.TryAdd(prefab, newPool);
+        return newPool;
     }
 }

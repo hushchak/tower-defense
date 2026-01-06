@@ -3,21 +3,13 @@ using UnityEngine;
 public class WaveManager : MonoBehaviour
 {
     [SerializeField] private WaveData waveData;
-    [SerializeField] private Path path;
-    [SerializeField] private Transform spawnPosition;
+    [SerializeField] private EnemySpawner spawner;
 
     private int currentIndex;
     private int spawnCount;
     private float waitTime;
 
-    private EnemySpawner spawner;
-
     private bool waveEnded;
-
-    private void Awake()
-    {
-        spawner = new EnemySpawner(spawnPosition.position, path);
-    }
 
     public void SetNewWave(WaveData newWaveData)
     {
