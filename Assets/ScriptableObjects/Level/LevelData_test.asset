@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbd2a5db74227471681486c16bf94a93, type: 3}
+  m_Name: LevelData_test
+  m_EditorClassIdentifier: Assembly-CSharp::LevelData
+  <Waves>k__BackingField:
+  - {fileID: 11400000, guid: 10eb95334bdba4848a680257c40d36ad, type: 2}
+  <PlayerHealth>k__BackingField: 10

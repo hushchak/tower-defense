@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: EnemyData_test
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   <HealthPoints>k__BackingField: 5
-  <Speed>k__BackingField: 5
+  <Speed>k__BackingField: 2
+  <Damage>k__BackingField: 1
   <Prefab>k__BackingField: {fileID: 8824569384443651764, guid: 8f38d7ddfcc9c4546b86e2a00020c751, type: 3}
