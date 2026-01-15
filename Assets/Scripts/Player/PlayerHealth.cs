@@ -22,7 +22,7 @@ public class PlayerHealth : MonoBehaviour
         damageEventChannel.Unsubscribe(TakeDamage);
     }
 
-    private void Intialize(LevelData data)
+    private void Intialize(LevelDataSO data)
     {
         maxHealth = data.PlayerHealth;
         health = maxHealth;

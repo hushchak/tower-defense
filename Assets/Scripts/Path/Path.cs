@@ -4,12 +4,16 @@ using UnityEngine;
 public class Path : MonoBehaviour
 {
     [SerializeField] private Transform[] points;
+    [SerializeField] private bool gizmos;
 
     public Transform GetPoint(int index) => points[index];
     public int GetPointsCount => points.Length;
 
     private void OnDrawGizmos()
     {
+        if (!gizmos)
+            return;
+
         if (points != null && points.Length > 0)
         {
             GUIStyle style = new();

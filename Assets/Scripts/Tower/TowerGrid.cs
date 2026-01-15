@@ -19,22 +19,6 @@ public class TowerGrid : MonoBehaviour
         grid = new Grid<bool>(gridSize.x, gridSize.y, gridCellSize, gridOrigin);
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            if (grid.TryGetIndex(mousePosition, out Vector2Int index))
-            {
-                Debug.Log(index);
-            }
-            else
-            {
-                Debug.Log("Nothing");
-            }
-        }
-    }
-
     private void OnDrawGizmos()
     {
         if (!gizmos)

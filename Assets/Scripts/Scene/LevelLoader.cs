@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public static class LevelLoader
 {
-    public static async void LoadLevel(LevelData data)
+    public static async void LoadLevel(LevelDataSO data)
     {
         try
         {
@@ -16,7 +16,7 @@ public static class LevelLoader
         }
     }
 
-    public static async Awaitable LoadLevelAsync(LevelData data)
+    public static async Awaitable LoadLevelAsync(LevelDataSO data)
     {
         await SceneLoader.LoadScene(SceneData.Tags.Main, SceneData.Names.LevelSession);
 

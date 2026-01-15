@@ -14,5 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
   <Waves>k__BackingField:
   - {fileID: 11400000, guid: 10eb95334bdba4848a680257c40d36ad, type: 2}
-  <PlayerHealth>k__BackingField: 10
+  - {fileID: 11400000, guid: 10eb95334bdba4848a680257c40d36ad, type: 2}
+  - {fileID: 11400000, guid: 10eb95334bdba4848a680257c40d36ad, type: 2}
+  - {fileID: 11400000, guid: 10eb95334bdba4848a680257c40d36ad, type: 2}
+  - {fileID: 11400000, guid: 10eb95334bdba4848a680257c40d36ad, type: 2}
+  <PlayerHealth>k__BackingField: 100000
   <LevelSceneName>k__BackingField: Level00t

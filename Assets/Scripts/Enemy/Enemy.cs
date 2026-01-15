@@ -1,7 +1,10 @@
+using System;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour, IDamageable
 {
+    public event Action Deactivated;
+
     [SerializeField] private EnemyData data;
     [SerializeField] private EventChannelInt damageEventChannel;
 
@@ -49,12 +52,14 @@ public class Enemy : MonoBehaviour, IDamageable
 
     private void PathEndReached()
     {
+        Deactivated?.Invoke();
         gameObject.SetActive(false);
         damageEventChannel.Raise(data.Damage);
     }
 
     private void Death()
     {
+        Deactivated?.Invoke();
         gameObject.SetActive(false);
     }
 

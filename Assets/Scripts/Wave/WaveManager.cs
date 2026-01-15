@@ -1,91 +1,70 @@
+using System;
+using System.Threading;
 using UnityEngine;
 
 public class WaveManager : MonoBehaviour
 {
     [SerializeField] private EventChannelLevelData levelIntializeEventChannel;
+    [SerializeField] private EventChannel playerDeathEventChannel;
+    [SerializeField] private EventChannel playerWinEventChannel;
+    [Space]
+    [SerializeField] private EventChannel waveStartChannel;
+    [SerializeField] private EventChannel waveStartedChannel;
+    [SerializeField] private EventChannel waveDefeatedChannel;
+
+    [Space]
     [SerializeField] private EnemySpawner spawner;
 
-    private WaveData[] waveData;
-    private int currentWaveIndex;
+    private WaveData[] waves;
+    private int waveIndex;
 
-    private int currentWaveActionIndex;
-    private int spawnCount;
-    private float waitTime;
+    private CancellationToken playerDeathCancellationToken;
 
-    private bool waveEnded;
+    private void Setup(LevelDataSO data)
+    {
+        waves = data.Waves;
+        waveIndex = 0;
+    }
 
     private void OnEnable()
     {
-        levelIntializeEventChannel.Subscribe(OnLevelInitialization);
+        levelIntializeEventChannel.Subscribe(Setup);
+        waveStartChannel.Subscribe(StartWave);
     }
 
     private void OnDisable()
     {
-        levelIntializeEventChannel.Unsubscribe(OnLevelInitialization);
+        levelIntializeEventChannel.Unsubscribe(Setup);
+        waveStartChannel.Unsubscribe(StartWave);
     }
 
-    private void OnLevelInitialization(LevelData data)
+    private async void StartWave()
     {
-        SetNewWaveData(data.Waves);
-    }
-
-    public void SetNewWaveData(WaveData[] newWaveData)
-    {
-        waveData = newWaveData;
-        currentWaveIndex = 0;
-
-        currentWaveActionIndex = 0;
-        spawnCount = 0;
-        waitTime = 0;
-
-        waveEnded = false;
-    }
-
-    private void Update()
-    {
-        if (waveEnded)
+        Debug.Log("SpawnWave");
+        if (waveIndex >= waves.Length || spawner.WaveInProgress)
             return;
 
-        HandleWave(Time.deltaTime);
-    }
-
-    private void HandleWave(float delta)
-    {
-        if (waitTime <= 0)
+        Debug.Log("Spawning");
+        playerDeathCancellationToken = new CancellationToken();
+        try
         {
-            SpawnEnemy();
+            waveStartedChannel.Raise();
+            await spawner.SpawnWave(waves[waveIndex], playerDeathCancellationToken);
+            waveIndex++;
+
+            if (waveIndex >= waves.Length)
+            {
+                PlayerWin();
+            }
         }
-        else
+        catch (Exception e)
         {
-            waitTime -= delta;
-        }
-
-        if (currentWaveActionIndex >= waveData[currentWaveIndex].Actions.Length)
-        {
-            EndWave();
-        }
-    }
-
-    private void SpawnEnemy()
-    {
-        spawner.SpawnEnemy(waveData[currentWaveIndex].Actions[currentWaveActionIndex].Enemy);
-        spawnCount++;
-
-        if (spawnCount >= waveData[currentWaveIndex].Actions[currentWaveActionIndex].Number)
-        {
-            spawnCount = 0;
-            waitTime = waveData[currentWaveIndex].Actions[currentWaveActionIndex].WaitTimeAfter;
-
-            currentWaveActionIndex++;
-        }
-        else
-        {
-            waitTime = waveData[currentWaveIndex].Actions[currentWaveActionIndex].Frequency;
+            Debug.LogError(e);
         }
     }
 
-    private void EndWave()
+    private void PlayerWin()
     {
-        waveEnded = true;
+        playerWinEventChannel.Raise();
     }
 }

@@ -30,4 +30,51 @@ public static class SceneLoader
             Debug.LogWarning($"You are trying to unload not loaded scene. Tag: {sceneTag}");
         }
     }
+
+    public static T[] GetObjectsOfTypeFromScene<T>(string sceneName)
+    {
+        Scene scene = SceneManager.GetSceneByName(sceneName);
+
+        if (!scene.IsValid() && !scene.isLoaded)
+        {
+            Debug.LogWarning($"You are trying to get objects of type {typeof(T)} from scene {sceneName}, that is not valid or loaded");
+            return default;
+        }
+
+        GameObject[] rooObjects = scene.GetRootGameObjects();
+        List<T> gameObjects = new();
+        foreach (GameObject rootObject in rooObjects)
+        {
+            T[] objects = rootObject.GetComponentsInChildren<T>();
+            if (objects.Length > 0)
+            {
+                gameObjects.AddRange(objects);
+            }
+        }
+
+        return gameObjects.ToArray();
+    }
+
+    public static T GetObjectOfTypeFromScene<T>(string sceneName)
+    {
+        Scene scene = SceneManager.GetSceneByName(sceneName);
+
+        if (!scene.IsValid() && !scene.isLoaded)
+        {
+            Debug.LogWarning($"You are trying to get object of type {typeof(T)} from scene {sceneName}, that is not valid or loaded");
+            return default;
+        }
+
+        GameObject[] rooObjects = scene.GetRootGameObjects();
+        foreach (GameObject rootObject in rooObjects)
+        {
+            T[] objects = rootObject.GetComponentsInChildren<T>();
+            if (objects.Length > 0)
+            {
+                return objects[0];
+            }
+        }
+
+        return default;
+    }
 }

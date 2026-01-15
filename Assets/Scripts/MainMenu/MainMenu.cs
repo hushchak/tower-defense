@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class MainMenu : MonoBehaviour
 {
-    public void LoadLevel(LevelData data)
+    public void LoadLevel(LevelDataSO data)
     {
         LevelLoader.LoadLevel(data);
     }
