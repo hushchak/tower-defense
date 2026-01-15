@@ -15,8 +15,6 @@ MonoBehaviour:
   <Waves>k__BackingField:
   - {fileID: 11400000, guid: 10eb95334bdba4848a680257c40d36ad, type: 2}
   - {fileID: 11400000, guid: 10eb95334bdba4848a680257c40d36ad, type: 2}
-  - {fileID: 11400000, guid: 10eb95334bdba4848a680257c40d36ad, type: 2}
-  - {fileID: 11400000, guid: 10eb95334bdba4848a680257c40d36ad, type: 2}
-  - {fileID: 11400000, guid: 10eb95334bdba4848a680257c40d36ad, type: 2}
-  <PlayerHealth>k__BackingField: 100000
+  <PlayerMaxHealth>k__BackingField: 100
+  <PlayerStartMoney>k__BackingField: 100
   <LevelSceneName>k__BackingField: Level00t

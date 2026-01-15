@@ -24,15 +24,14 @@ public class LevelManager : MonoBehaviour
 
     private LevelData GetLevelData(LevelDataSO dataSO)
     {
-        TowerGrid towerGrid = SceneLoader.GetObjectOfTypeFromScene<TowerGrid>(dataSO.LevelSceneName);
-        PlayerHealth playerHealth = GetComponentInChildren<PlayerHealth>();
+        TowerGrid towerGrid = SceneLoader.GetObjectOfTypeFromScene<TowerGrid>(dataSO.LevelSceneName);;
 
         return new LevelData(
             waves: dataSO.Waves,
-            maxPlayerHealth: dataSO.MaxPlayerHealth,
+            playerMaxHealth: dataSO.PlayerMaxHealth,
+            playerStartMoney: dataSO.PlayerStartMoney,
 
-            towerGrid: towerGrid,
-            playerHealth: playerHealth
+            towerGrid: towerGrid
         );
     }
 

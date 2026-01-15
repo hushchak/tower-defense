@@ -20,7 +20,7 @@ public class WaveManager : MonoBehaviour
 
     private CancellationToken playerDeathCancellationToken;
 
-    private void Setup(LevelDataSO data)
+    private void Setup(LevelData data)
     {
         waves = data.Waves;
         waveIndex = 0;
@@ -40,11 +40,9 @@ public class WaveManager : MonoBehaviour
 
     private async void StartWave()
     {
-        Debug.Log("SpawnWave");
         if (waveIndex >= waves.Length || spawner.WaveInProgress)
             return;
 
-        Debug.Log("Spawning");
         playerDeathCancellationToken = new CancellationToken();
         try
         {

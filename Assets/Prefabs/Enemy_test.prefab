@@ -153,6 +153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   data: {fileID: 11400000, guid: 00cfb69a2db9c409d8e48a06b5d91da3, type: 2}
   damageEventChannel: {fileID: 11400000, guid: 409e0804994c7440896203de7d80b7b0, type: 2}
+  addMoneyEventChannel: {fileID: 11400000, guid: 08d4b3d2b0917496e8f86a87c1bcf3f9, type: 2}
 --- !u!61 &8378972675980541951
 BoxCollider2D:
   m_ObjectHideFlags: 0

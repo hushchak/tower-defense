@@ -7,6 +7,8 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private EventChannelInt damageEventChannel;
     [SerializeField] private EventChannel dealthEventChannel;
 
+    [SerializeField] private EventChannelInt healthChangedChannel;
+
     private int maxHealth;
     private int health;
 
@@ -22,9 +24,9 @@ public class PlayerHealth : MonoBehaviour
         damageEventChannel.Unsubscribe(TakeDamage);
     }
 
-    private void Intialize(LevelDataSO data)
+    private void Intialize(LevelData data)
     {
-        maxHealth = data.PlayerHealth;
+        maxHealth = data.PlayerMaxHealth;
         health = maxHealth;
     }
 
@@ -34,6 +36,8 @@ public class PlayerHealth : MonoBehaviour
         health = health < 0
             ? 0
             : health;
+
+        healthChangedChannel.Raise(health);
 
         if (health == 0)
         {

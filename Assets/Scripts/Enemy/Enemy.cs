@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
     [SerializeField] private EnemyData data;
     [SerializeField] private EventChannelInt damageEventChannel;
+    [SerializeField] private EventChannelInt addMoneyEventChannel;
 
     private Path path;
     private int currentPoint;
@@ -61,6 +62,7 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         Deactivated?.Invoke();
         gameObject.SetActive(false);
+        addMoneyEventChannel.Raise(data.MoneyValue);
     }
 
     public void ApplyDamage(int damage)

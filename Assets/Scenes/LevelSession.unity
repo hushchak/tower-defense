@@ -315,8 +315,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1156325082}
   - component: {fileID: 1156325083}
+  - component: {fileID: 1156325084}
   m_Layer: 0
-  m_Name: Player Health
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -352,6 +353,22 @@ MonoBehaviour:
   levelInitializationEventChannel: {fileID: 11400000, guid: 05742405a959f4c3296c8517e9ec9f97, type: 2}
   damageEventChannel: {fileID: 11400000, guid: 409e0804994c7440896203de7d80b7b0, type: 2}
   dealthEventChannel: {fileID: 11400000, guid: 993365a455deb480fbf0a318336f9805, type: 2}
+  healthChangedChannel: {fileID: 11400000, guid: 29dbad0969da64e77bc0c1a005b12957, type: 2}
+--- !u!114 &1156325084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1156325081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 599dcf6e89cc44af49a5036d9db50783, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerMoney
+  levelInitializationEventChannel: {fileID: 11400000, guid: 05742405a959f4c3296c8517e9ec9f97, type: 2}
+  addMoneyChannel: {fileID: 11400000, guid: 08d4b3d2b0917496e8f86a87c1bcf3f9, type: 2}
+  moneyChangedChannel: {fileID: 11400000, guid: df85d83e79c3342eab0839756cdbe806, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

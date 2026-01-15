@@ -23,13 +23,11 @@ public class Test : MonoBehaviour
 
     private void TurnOn()
     {
-        Debug.Log("WaveDefeated");
         turnedOff = false;
     }
 
     private void TurnOff()
     {
-        Debug.Log("WaveStarted");
         turnedOff = true;
     }
 
@@ -37,7 +35,6 @@ public class Test : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log(turnedOff);
             waveStartChannel.Raise();
         }
     }
