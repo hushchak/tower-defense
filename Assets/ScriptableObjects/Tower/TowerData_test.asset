@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TowerData_test
   m_EditorClassIdentifier: Assembly-CSharp::TowerData
   <ProjectilePrefab>k__BackingField: {fileID: 223473523633100699, guid: ac885cde3cf4840089530f943a10c25d, type: 3}
-  <Frequency>k__BackingField: 1
+  <Frequency>k__BackingField: 0.5
   <Radius>k__BackingField: 2
   <EnemyMask>k__BackingField:
     serializedVersion: 2

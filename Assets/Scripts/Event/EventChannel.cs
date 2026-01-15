@@ -7,7 +7,7 @@ public class EventChannel : ScriptableObject
 {
     private List<Action> actions = new();
 
-    public void Subsribe(Action action) => actions.Add(action);
+    public void Subscribe(Action action) => actions.Add(action);
     public void Unsubscribe(Action action) => actions.Remove(action);
 
     public void Raise()

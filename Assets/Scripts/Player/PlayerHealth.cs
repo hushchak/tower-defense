@@ -12,8 +12,8 @@ public class PlayerHealth : MonoBehaviour
 
     private void OnEnable()
     {
-        levelInitializationEventChannel.Subsribe(Intialize);
-        damageEventChannel.Subsribe(TakeDamage);
+        levelInitializationEventChannel.Subscribe(Intialize);
+        damageEventChannel.Subscribe(TakeDamage);
     }
 
     private void OnDisable()

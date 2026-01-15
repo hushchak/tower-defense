@@ -41,6 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 374081474448684080}
   - component: {fileID: 946007727867418873}
+  - component: {fileID: 6460068842153641257}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -57,8 +58,8 @@ Transform:
   m_GameObject: {fileID: 3304291779822037177}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4622833677964880724}
@@ -112,8 +113,8 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 0.08962262, g: 0.36458898, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: da6cd6f62a5b04e2596ce60f981c6e95, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -122,6 +123,19 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &6460068842153641257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3304291779822037177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d68931976d6fd43b4ac2a65db6d27abd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::YSortStatic
+  spriteRenderer: {fileID: 946007727867418873}
 --- !u!1 &6857324323626842711
 GameObject:
   m_ObjectHideFlags: 0
@@ -148,7 +162,7 @@ Transform:
   m_GameObject: {fileID: 6857324323626842711}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.19, y: -0.79, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

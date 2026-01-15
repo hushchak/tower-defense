@@ -1,17 +1,32 @@
+using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
     [SerializeField] private EventChannelLevelData levelIntializeEventChannel;
     [SerializeField] private EventChannel playerDeathEventChannel;
 
-    [Space]
-    [SerializeField] private LevelData levelData;
+    private LevelData levelData;
+
+    public async void SetData(LevelData data)
+    {
+        levelData = data;
+
+        try
+        {
+            await SceneLoader.LoadScene(SceneData.Tags.Level, data.LevelSceneName);
+        }
+        catch (Exception e)
+        {
+            Debug.LogError(e);
+        }
+
+        levelIntializeEventChannel.Raise(levelData);
+    }
 
     private void OnEnable()
     {
-        playerDeathEventChannel.Subsribe(Defeat);
+        playerDeathEventChannel.Subscribe(Defeat);
     }
 
     private void OnDisable()
@@ -19,14 +34,17 @@ public class LevelManager : MonoBehaviour
         playerDeathEventChannel.Unsubscribe(Defeat);
     }
 
-    private void Start()
-    {
-        levelIntializeEventChannel.Raise(levelData);
-    }
-
-    private void Defeat()
+    private async void Defeat()
     {
         Debug.Log("Player defeated");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        try
+        {
+            await SceneLoader.UnloadScene(SceneData.Tags.Level);
+            await SceneLoader.LoadScene(SceneData.Tags.Main, SceneData.Names.MainMenu);
+        }
+        catch (Exception e)
+        {
+            Debug.LogError(e);
+        }
     }
 }

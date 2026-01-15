@@ -2,19 +2,39 @@ using UnityEngine;
 
 public class WaveManager : MonoBehaviour
 {
-    [SerializeField] private WaveData waveData;
+    [SerializeField] private EventChannelLevelData levelIntializeEventChannel;
     [SerializeField] private EnemySpawner spawner;
 
-    private int currentIndex;
+    private WaveData[] waveData;
+    private int currentWaveIndex;
+
+    private int currentWaveActionIndex;
     private int spawnCount;
     private float waitTime;
 
     private bool waveEnded;
 
-    public void SetNewWave(WaveData newWaveData)
+    private void OnEnable()
+    {
+        levelIntializeEventChannel.Subscribe(OnLevelInitialization);
+    }
+
+    private void OnDisable()
+    {
+        levelIntializeEventChannel.Unsubscribe(OnLevelInitialization);
+    }
+
+    private void OnLevelInitialization(LevelData data)
+    {
+        SetNewWaveData(data.Waves);
+    }
+
+    public void SetNewWaveData(WaveData[] newWaveData)
     {
         waveData = newWaveData;
-        currentIndex = 0;
+        currentWaveIndex = 0;
+
+        currentWaveActionIndex = 0;
         spawnCount = 0;
         waitTime = 0;
 
@@ -40,7 +60,7 @@ public class WaveManager : MonoBehaviour
             waitTime -= delta;
         }
 
-        if (currentIndex >= waveData.Actions.Length)
+        if (currentWaveActionIndex >= waveData[currentWaveIndex].Actions.Length)
         {
             EndWave();
         }
@@ -48,19 +68,19 @@ public class WaveManager : MonoBehaviour
 
     private void SpawnEnemy()
     {
-        spawner.SpawnEnemy(waveData.Actions[currentIndex].Enemy);
+        spawner.SpawnEnemy(waveData[currentWaveIndex].Actions[currentWaveActionIndex].Enemy);
         spawnCount++;
 
-        if (spawnCount >= waveData.Actions[currentIndex].Number)
+        if (spawnCount >= waveData[currentWaveIndex].Actions[currentWaveActionIndex].Number)
         {
             spawnCount = 0;
-            waitTime = waveData.Actions[currentIndex].WaitTimeAfter;
+            waitTime = waveData[currentWaveIndex].Actions[currentWaveActionIndex].WaitTimeAfter;
 
-            currentIndex++;
+            currentWaveActionIndex++;
         }
         else
         {
-            waitTime = waveData.Actions[currentIndex].Frequency;
+            waitTime = waveData[currentWaveIndex].Actions[currentWaveActionIndex].Frequency;
         }
     }
 
