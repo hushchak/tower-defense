@@ -3,7 +3,7 @@ using TMPro;
 using UnityEditor;
 using UnityEngine;
 
-public class TowerGrid : MonoBehaviour
+public class TowerGrid : Singleton<TowerGrid>
 {
     [SerializeField] private Vector2Int gridSize;
     [SerializeField] private Vector2 gridCellSize;
@@ -14,8 +14,9 @@ public class TowerGrid : MonoBehaviour
 
     private Grid<bool> grid;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         grid = new Grid<bool>(gridSize.x, gridSize.y, gridCellSize, gridOrigin);
     }
 

@@ -1,9 +1,9 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-    [SerializeField] private EventChannelLevelData levelIntializeEventChannel;
     [SerializeField] private EventChannel playerWinEventChannel;
     [SerializeField] private EventChannel playerDeathEventChannel;
 
@@ -19,20 +19,40 @@ public class LevelManager : MonoBehaviour
             Debug.LogError(e);
         }
 
-        levelIntializeEventChannel.Raise(GetLevelData(data));
+        InitializeLevel(data);
+    }
+
+    private void InitializeLevel(LevelDataSO data)
+    {
+        List<ILevelInitializable> initializables = new();
+
+        ILevelInitializable[] sessionInitializables =
+            SceneLoader.GetObjectsOfTypeFromScene<ILevelInitializable>(SceneData.Names.LevelSession);
+        ILevelInitializable[] levelInitializables =
+            SceneLoader.GetObjectsOfTypeFromScene<ILevelInitializable>(data.LevelSceneName);
+        ILevelInitializable[] UIInitializables =
+            SceneLoader.GetObjectsOfTypeFromScene<ILevelInitializable>(SceneData.Names.LevelUI);
+
+        if (sessionInitializables.Length > 0)
+            initializables.AddRange(sessionInitializables);
+        if (levelInitializables.Length > 0)
+            initializables.AddRange(levelInitializables);
+        if (UIInitializables.Length > 0)
+            initializables.AddRange(UIInitializables);
+
+        foreach (ILevelInitializable initializable in initializables)
+        {
+            initializable.Initialize(GetLevelData(data));
+        }
     }
 
     private LevelData GetLevelData(LevelDataSO dataSO)
     {
-        TowerGrid towerGrid = SceneLoader.GetObjectOfTypeFromScene<TowerGrid>(dataSO.LevelSceneName);;
-
         return new LevelData(
             waves: dataSO.Waves,
             playerMaxHealth: dataSO.PlayerMaxHealth,
             playerStartMoney: dataSO.PlayerStartMoney,
-            towers: dataSO.Towers,
-
-            towerGrid: towerGrid
+            towers: dataSO.Towers
         );
     }
 

@@ -2,13 +2,12 @@ using System;
 using System.Threading;
 using UnityEngine;
 
-public class WaveManager : MonoBehaviour
+public class WaveManager : MonoBehaviour, ILevelInitializable
 {
-    [SerializeField] private EventChannelLevelData levelIntializeEventChannel;
     [SerializeField] private EventChannel playerDeathEventChannel;
     [SerializeField] private EventChannel playerWinEventChannel;
     [Space]
-    [SerializeField] private EventChannel waveStartChannel;
+    [SerializeField] private EventChannel waveInitializeChannel;
     [SerializeField] private EventChannel waveStartedChannel;
     [SerializeField] private EventChannel waveDefeatedChannel;
 
@@ -20,7 +19,7 @@ public class WaveManager : MonoBehaviour
 
     private CancellationToken playerDeathCancellationToken;
 
-    private void Setup(LevelData data)
+    public void Initialize(LevelData data)
     {
         waves = data.Waves;
         waveIndex = 0;
@@ -28,14 +27,12 @@ public class WaveManager : MonoBehaviour
 
     private void OnEnable()
     {
-        levelIntializeEventChannel.Subscribe(Setup);
-        waveStartChannel.Subscribe(StartWave);
+        waveInitializeChannel.Subscribe(StartWave);
     }
 
     private void OnDisable()
     {
-        levelIntializeEventChannel.Unsubscribe(Setup);
-        waveStartChannel.Unsubscribe(StartWave);
+        waveInitializeChannel.Unsubscribe(StartWave);
     }
 
     private async void StartWave()

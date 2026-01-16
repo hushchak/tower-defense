@@ -1,25 +1,14 @@
 using System;
 using UnityEngine;
 
-public class TowerPanel : MonoBehaviour
+public class TowerPanel : MonoBehaviour, ILevelInitializable
 {
-    [SerializeField] private EventChannelLevelData levelInitializationChannel;
     [SerializeField] private Transform cardParent;
     [SerializeField] private TowerCard cardPrefab;
 
     private TowerCardData[] Towers;
 
-    private void OnEnable()
-    {
-        levelInitializationChannel.Subscribe(Setup);
-    }
-
-    private void OnDisable()
-    {
-        levelInitializationChannel.Unsubscribe(Setup);
-    }
-
-    private void Setup(LevelData data)
+    public void Initialize(LevelData data)
     {
         Towers = data.Towers;
 

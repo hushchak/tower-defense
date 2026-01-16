@@ -5,13 +5,13 @@ public class WaveButton : MonoBehaviour
 {
     [SerializeField] private Button button;
 
-    [SerializeField] private EventChannel waveStartChannel;
+    [SerializeField] private EventChannel waveInitializeChannel;
     [SerializeField] private EventChannel waveStartedChannel;
     [SerializeField] private EventChannel waveDefeatedChannel;
 
     private void StartWave()
     {
-        waveStartChannel.Raise();
+        waveInitializeChannel.Raise();
     }
 
     private void OnEnable()
