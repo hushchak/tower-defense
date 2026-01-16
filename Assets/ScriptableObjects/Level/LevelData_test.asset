@@ -15,6 +15,10 @@ MonoBehaviour:
   <Waves>k__BackingField:
   - {fileID: 11400000, guid: 10eb95334bdba4848a680257c40d36ad, type: 2}
   - {fileID: 11400000, guid: 10eb95334bdba4848a680257c40d36ad, type: 2}
+  <Towers>k__BackingField:
+  - {fileID: 11400000, guid: cfee5f59485b643b9aecd1ae84171c8d, type: 2}
+  - {fileID: 11400000, guid: 93fdf6bd7f1934eb084d376b74a190e8, type: 2}
+  - {fileID: 11400000, guid: efce74206c0c246aeb31fe6b6db59765, type: 2}
   <PlayerMaxHealth>k__BackingField: 100
   <PlayerStartMoney>k__BackingField: 100
   <LevelSceneName>k__BackingField: Level00t

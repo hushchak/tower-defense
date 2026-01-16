@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61e6f39b362a3467cbe4434a9d2762c0, type: 3}
+  m_Name: Tower_Test3
+  m_EditorClassIdentifier: Assembly-CSharp::TowerCardData
+  <Prefab>k__BackingField: {fileID: 6857324323626842711, guid: 8f39d531345b4450f89d4a8cda7277d6, type: 3}
+  <Cost>k__BackingField: 300
+  <Sprite>k__BackingField: {fileID: 1422536714, guid: 76f0c18292e194564af568b204858487, type: 3}
+  <Name>k__BackingField: Tower 3

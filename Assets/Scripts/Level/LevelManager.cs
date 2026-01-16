@@ -30,6 +30,7 @@ public class LevelManager : MonoBehaviour
             waves: dataSO.Waves,
             playerMaxHealth: dataSO.PlayerMaxHealth,
             playerStartMoney: dataSO.PlayerStartMoney,
+            towers: dataSO.Towers,
 
             towerGrid: towerGrid
         );
