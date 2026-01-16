@@ -3484,53 +3484,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!1 &1595136727
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1595136728}
-  - component: {fileID: 1595136729}
-  m_Layer: 0
-  m_Name: Test
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1595136728
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1595136727}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1595136729
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1595136727}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70d79182046eb4673b853af26ea6ff77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Test
-  waveStartChannel: {fileID: 11400000, guid: 3127749966c904ab5922f2000d8a946f, type: 2}
-  waveStartedChannel: {fileID: 11400000, guid: 4f5d628ccc0334eac9da61adf710e5f7, type: 2}
-  waveDefeatedChannel: {fileID: 11400000, guid: 8891b3a386a9a44eebd358890505f2c4, type: 2}
 --- !u!1 &1632124854
 GameObject:
   m_ObjectHideFlags: 0
@@ -5537,4 +5490,3 @@ SceneRoots:
   - {fileID: 182682608}
   - {fileID: 2051514600}
   - {fileID: 774443725}
-  - {fileID: 1595136728}

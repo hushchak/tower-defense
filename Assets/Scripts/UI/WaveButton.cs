@@ -1,41 +1,33 @@
-using System;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class Test : MonoBehaviour
+public class WaveButton : MonoBehaviour
 {
+    [SerializeField] private Button button;
+
     [SerializeField] private EventChannel waveStartChannel;
     [SerializeField] private EventChannel waveStartedChannel;
     [SerializeField] private EventChannel waveDefeatedChannel;
 
-    private bool turnedOff = false;
+    private void StartWave()
+    {
+        waveStartChannel.Raise();
+    }
 
     private void OnEnable()
     {
+        button.onClick.AddListener(StartWave);
         waveStartedChannel.Subscribe(TurnOff);
         waveDefeatedChannel.Subscribe(TurnOn);
     }
 
     private void OnDisable()
     {
+        button.onClick.RemoveListener(StartWave);
         waveStartedChannel.Unsubscribe(TurnOff);
         waveDefeatedChannel.Unsubscribe(TurnOn);
     }
 
-    private void TurnOn()
-    {
-        turnedOff = false;
-    }
-
-    private void TurnOff()
-    {
-        turnedOff = true;
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            waveStartChannel.Raise();
-        }
-    }
+    private void TurnOn() => button.interactable = true;
+    private void TurnOff() => button.interactable = false;
 }
