@@ -3528,10 +3528,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5fbec75619924138832c99bb6d2d9ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WaveManager
-  levelIntializeEventChannel: {fileID: 11400000, guid: 05742405a959f4c3296c8517e9ec9f97, type: 2}
   playerDeathEventChannel: {fileID: 11400000, guid: 993365a455deb480fbf0a318336f9805, type: 2}
   playerWinEventChannel: {fileID: 11400000, guid: 3976826bdf95b4beeaa70ffaa4d07faf, type: 2}
-  waveStartChannel: {fileID: 11400000, guid: 3127749966c904ab5922f2000d8a946f, type: 2}
+  waveInitializeChannel: {fileID: 11400000, guid: 3127749966c904ab5922f2000d8a946f, type: 2}
   waveStartedChannel: {fileID: 11400000, guid: 4f5d628ccc0334eac9da61adf710e5f7, type: 2}
   waveDefeatedChannel: {fileID: 11400000, guid: 8891b3a386a9a44eebd358890505f2c4, type: 2}
   spawner: {fileID: 374526478}

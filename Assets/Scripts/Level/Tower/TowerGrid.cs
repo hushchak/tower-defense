@@ -20,6 +20,34 @@ public class TowerGrid : Singleton<TowerGrid>
         grid = new Grid<bool>(gridSize.x, gridSize.y, gridCellSize, gridOrigin);
     }
 
+    public bool TryPlaceTower(Vector2 worldPosition, GameObject prefab)
+    {
+        if (grid.TryGetValue(worldPosition, out bool isTowerPlaced, out Vector2Int index))
+        {
+            if (isTowerPlaced)
+                return false;
+
+            GameObject tower = Instantiate(prefab, transform);
+            tower.transform.position = GetCellCenter(index.x, index.y);
+
+            grid.SetValue(index.x, index.y, true);
+            return true;
+        }
+        return false;
+    }
+
+    private Vector2 GetCellCenter(int x, int y)
+    {
+        if (grid.TryGetValue(x, y, out bool _))
+        {
+            Vector2 cellOrigin = gridOrigin + new Vector2(x * gridCellSize.x, y * gridCellSize.y);
+            Vector2 cellCenter = cellOrigin + gridCellSize * 0.5f;
+            return cellCenter;
+        }
+
+        return Vector2.zero;
+    }
+
     private void OnDrawGizmos()
     {
         if (!gizmos)
@@ -41,7 +69,7 @@ public class TowerGrid : Singleton<TowerGrid>
         {
             for (int j = 0; j < gridSize.y; j++)
             {
-                grid.GetValue(i, j, out bool value);
+                grid.TryGetValue(i, j, out bool value);
                 Vector2 cellOrigin = gridOrigin + new Vector2(i * gridCellSize.x, j * gridCellSize.y);
                 Handles.Label(cellOrigin + gridCellSize * 0.5f, value.ToString(), style);
             }

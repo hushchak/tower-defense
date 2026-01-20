@@ -119,6 +119,51 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &575847800
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 575847801}
+  - component: {fileID: 575847802}
+  m_Layer: 0
+  m_Name: TowerPlacement
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &575847801
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 575847800}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 752246077}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &575847802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 575847800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65be61f9761374ef88aa0f7382ce8dd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TowerPlacement
+  triggerTowerPlacementChannel: {fileID: 11400000, guid: c82fb9a59de1843978d636e0f3912bbc, type: 2}
 --- !u!1 &752246075
 GameObject:
   m_ObjectHideFlags: 0
@@ -148,7 +193,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1eef459d9d14b42c688f6b6548fcd3f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelManager
-  levelIntializeEventChannel: {fileID: 11400000, guid: 05742405a959f4c3296c8517e9ec9f97, type: 2}
   playerWinEventChannel: {fileID: 11400000, guid: 3976826bdf95b4beeaa70ffaa4d07faf, type: 2}
   playerDeathEventChannel: {fileID: 11400000, guid: 993365a455deb480fbf0a318336f9805, type: 2}
 --- !u!4 &752246077
@@ -166,6 +210,7 @@ Transform:
   m_Children:
   - {fileID: 1156325082}
   - {fileID: 953470096}
+  - {fileID: 575847801}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &953470095
@@ -350,8 +395,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d34f4d82905d4ba08d06cb9d4ffeffc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
-  levelInitializationEventChannel: {fileID: 11400000, guid: 05742405a959f4c3296c8517e9ec9f97, type: 2}
-  damageEventChannel: {fileID: 11400000, guid: 409e0804994c7440896203de7d80b7b0, type: 2}
   dealthEventChannel: {fileID: 11400000, guid: 993365a455deb480fbf0a318336f9805, type: 2}
   healthChangedChannel: {fileID: 11400000, guid: 29dbad0969da64e77bc0c1a005b12957, type: 2}
 --- !u!114 &1156325084
@@ -366,8 +409,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 599dcf6e89cc44af49a5036d9db50783, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMoney
-  levelInitializationEventChannel: {fileID: 11400000, guid: 05742405a959f4c3296c8517e9ec9f97, type: 2}
-  addMoneyChannel: {fileID: 11400000, guid: 08d4b3d2b0917496e8f86a87c1bcf3f9, type: 2}
   moneyChangedChannel: {fileID: 11400000, guid: df85d83e79c3342eab0839756cdbe806, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

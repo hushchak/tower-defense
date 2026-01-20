@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fc33a7754b3dd4b3a9d0b619c0d6daaf, type: 3}
-  m_Name: WaveData_test
+  m_Name: WaveData_test 2
   m_EditorClassIdentifier: Assembly-CSharp::WaveData
   <Actions>k__BackingField:
   - <Enemy>k__BackingField: {fileID: 11400000, guid: 00cfb69a2db9c409d8e48a06b5d91da3, type: 2}
-    <Number>k__BackingField: 5
+    <Number>k__BackingField: 10
     <Frequency>k__BackingField: 0.5
     <WaitTimeAfter>k__BackingField: 1

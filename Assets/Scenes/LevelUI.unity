@@ -1040,7 +1040,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 930912d7d514c4b12b288256415e66dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TowerPanel
-  levelInitializationChannel: {fileID: 11400000, guid: 05742405a959f4c3296c8517e9ec9f97, type: 2}
   cardParent: {fileID: 1831447897}
   cardPrefab: {fileID: -5042508589401750785, guid: 98ddbc658e27345f69cc6914d334fb1e, type: 3}
 --- !u!1 &1835226906
@@ -1138,7 +1137,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealthUI
   healthText: {fileID: 2053628470}
   healthChangedChannel: {fileID: 11400000, guid: 29dbad0969da64e77bc0c1a005b12957, type: 2}
-  levelInitializeChannel: {fileID: 11400000, guid: 05742405a959f4c3296c8517e9ec9f97, type: 2}
 --- !u!114 &1835226911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1153,7 +1151,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMoneyUI
   moneyText: {fileID: 668662489}
   moneyChangedChannel: {fileID: 11400000, guid: df85d83e79c3342eab0839756cdbe806, type: 2}
-  levelInitializeChannel: {fileID: 11400000, guid: 05742405a959f4c3296c8517e9ec9f97, type: 2}
 --- !u!1 &1996272003
 GameObject:
   m_ObjectHideFlags: 0
@@ -1289,7 +1286,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WaveButton
   button: {fileID: 1996272005}
-  waveStartChannel: {fileID: 11400000, guid: 3127749966c904ab5922f2000d8a946f, type: 2}
+  waveInitializeChannel: {fileID: 11400000, guid: 3127749966c904ab5922f2000d8a946f, type: 2}
   waveStartedChannel: {fileID: 11400000, guid: 4f5d628ccc0334eac9da61adf710e5f7, type: 2}
   waveDefeatedChannel: {fileID: 11400000, guid: 8891b3a386a9a44eebd358890505f2c4, type: 2}
 --- !u!1 &2053628468
