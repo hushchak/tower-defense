@@ -77,7 +77,7 @@ public class Grid<T>
         return !(x < 0 || x > grid.GetLength(0) - 1 || y < 0 || y > grid.GetLength(1) - 1);
     }
 
-    private bool PositionInsideGrid(Vector2 worldPosition)
+    public bool PositionInsideGrid(Vector2 worldPosition)
     {
         float maxXPosition = origin.x + cellSize.x * grid.GetLength(0);
         float maxYPosition = origin.y + cellSize.y * grid.GetLength(1);

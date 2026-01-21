@@ -36,6 +36,22 @@ public class TowerGrid : Singleton<TowerGrid>
         return false;
     }
 
+    public bool PositionInsideGrid(Vector2 worldPosition)
+    {
+        return grid.PositionInsideGrid(worldPosition);
+    }
+
+    public bool CanPlaceTower(Vector2 worldPosition, out Vector2 cellPosition)
+    {
+        if (grid.TryGetValue(worldPosition, out bool isTowerPlaced, out Vector2Int index))
+        {
+            cellPosition = GetCellCenter(index.x, index.y);
+            return !isTowerPlaced;
+        }
+        cellPosition = Vector2.zero;
+        return false;
+    }
+
     private Vector2 GetCellCenter(int x, int y)
     {
         if (grid.TryGetValue(x, y, out bool _))
