@@ -3,10 +3,10 @@ using UnityEngine;
 
 public class TowerPlacement : MonoBehaviour
 {
-    [SerializeField] private EventChannelTowerCardData triggerTowerPlacementChannel;
+    [SerializeField] private EventChannelITowerCard triggerTowerPlacementChannel;
 
     private bool placementActivated = false;
-    private TowerCardData currentTower;
+    private ITowerCard currentTowerCard;
     private TowerPreview currentTowerPreview;
 
     private void OnEnable()
@@ -21,14 +21,14 @@ public class TowerPlacement : MonoBehaviour
         InputReader.OnMouseClick -= OnMouseClick;
     }
 
-    private void TiggerTowerPlacement(TowerCardData data)
+    private void TiggerTowerPlacement(ITowerCard triggerTowerCard)
     {
-        if (currentTower == data)
+        if (currentTowerCard == triggerTowerCard)
         {
             ClearCurrentSelection();
             return;
         }
-        if (data.Cost > PlayerMoney.Instance.GetMoney())
+        if (triggerTowerCard.GetCost() > PlayerMoney.Instance.GetMoney())
         {
             Debug.Log("Cost is too big");
             if (placementActivated)
@@ -36,15 +36,18 @@ public class TowerPlacement : MonoBehaviour
             return;
         }
 
-        currentTower = data;
+        currentTowerCard = triggerTowerCard;
+        currentTowerCard.Select();
         placementActivated = true;
-        currentTowerPreview = Instantiate(currentTower.Preview, transform);
+
+        currentTowerPreview = Instantiate(currentTowerCard.GetPreview(), transform);
         currentTowerPreview.Hide();
     }
 
     private void ClearCurrentSelection()
     {
-        currentTower = null;
+        currentTowerCard?.Deselect();
+        currentTowerCard = null;
         placementActivated = false;
         if (currentTowerPreview != null)
         {
@@ -87,7 +90,7 @@ public class TowerPlacement : MonoBehaviour
     {
         if (placementActivated)
         {
-            if (PlayerMoney.Instance.GetMoney() < currentTower.Cost)
+            if (PlayerMoney.Instance.GetMoney() < currentTowerCard.GetCost())
             {
                 ClearCurrentSelection();
                 return;
@@ -96,7 +99,7 @@ public class TowerPlacement : MonoBehaviour
             Vector2 mouseWorldPosition = Camera.main.ScreenToWorldPoint(mouseScreenPosition);
             if (TryPlaceTower(mouseWorldPosition))
             {
-                PlayerMoney.Instance.TryDecreaseMoney(currentTower.Cost);
+                PlayerMoney.Instance.TryDecreaseMoney(currentTowerCard.GetCost());
                 ClearCurrentSelection();
             }
         }
@@ -104,6 +107,6 @@ public class TowerPlacement : MonoBehaviour
 
     private bool TryPlaceTower(Vector2 worldPosition)
     {
-        return TowerGrid.Instance.TryPlaceTower(worldPosition, currentTower.Prefab);
+        return TowerGrid.Instance.TryPlaceTower(worldPosition, currentTowerCard.GetPrefab());
     }
 }

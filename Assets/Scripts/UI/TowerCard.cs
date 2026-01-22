@@ -2,9 +2,9 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TowerCard : MonoBehaviour
+public class TowerCard : MonoBehaviour, ITowerCard
 {
-    [SerializeField] private EventChannelTowerCardData triggerTowerPlacementChannel;
+    [SerializeField] private EventChannelITowerCard triggerTowerPlacementChannel;
     [SerializeField] private TMP_Text cardName;
     [SerializeField] private TMP_Text cardCost;
     [SerializeField] private Image image;
@@ -24,13 +24,19 @@ public class TowerCard : MonoBehaviour
         image.sprite = data.Sprite;
     }
 
-    private void OnCardClicked()
+    private void OnCardClicked() => triggerTowerPlacementChannel.Raise(this);
+
+    public GameObject GetPrefab() => data.Prefab;
+    public TowerPreview GetPreview() => data.Preview;
+    public int GetCost() => data.Cost;
+
+    public void Select()
     {
-        triggerTowerPlacementChannel.Raise(data);
+        Debug.Log($"{data.Name} is selected");
     }
 
-    public GameObject GetPrefab()
+    public void Deselect()
     {
-        return data.Prefab;
+        Debug.Log($"{data.Name} is deselected");
     }
 }

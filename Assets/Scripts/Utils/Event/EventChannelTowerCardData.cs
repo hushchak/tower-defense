@@ -2,17 +2,17 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "EventChannels/EventChannel TowerCardData", fileName = "EventChannelTowerCardData")]
-public class EventChannelTowerCardData : ScriptableObject
+[CreateAssetMenu(menuName = "EventChannels/EventChannel ITowerCard", fileName = "EventChannelITowerCard")]
+public class EventChannelITowerCard : ScriptableObject
 {
-    private List<Action<TowerCardData>> actions = new();
+    private List<Action<ITowerCard>> actions = new();
 
-    public void Subscribe(Action<TowerCardData> action) => actions.Add(action);
-    public void Unsubscribe(Action<TowerCardData> action) => actions.Remove(action);
+    public void Subscribe(Action<ITowerCard> action) => actions.Add(action);
+    public void Unsubscribe(Action<ITowerCard> action) => actions.Remove(action);
 
-    public void Raise(TowerCardData data)
+    public void Raise(ITowerCard data)
     {
-        foreach (Action<TowerCardData> actions in actions)
+        foreach (Action<ITowerCard> actions in actions)
         {
             actions?.Invoke(data);
         }
