@@ -32,6 +32,7 @@ public class Tower : MonoBehaviour
         projectile.Setup(target);
 
         projectile.gameObject.SetActive(true);
+        Audio.Play(data.ShotSound);
     }
 
     private GameObject GetProjectile()
