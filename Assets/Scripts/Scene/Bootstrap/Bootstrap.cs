@@ -6,4 +6,10 @@ public class Bootstrap : MonoBehaviour
     {
         await SceneLoader.LoadScene(SceneData.Tags.Main, SceneData.Names.MainMenu);
     }
+
+    private void OnApplicationQuit()
+    {
+        EventChannel applicationQuitChannel = Resources.Load<EventChannel>("Events/ApplicationQuitChannel");
+        applicationQuitChannel.Raise();
+    }
 }
