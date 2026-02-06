@@ -7,12 +7,16 @@ public static class SaveManager
 {
     public enum Slot
     {
+        Empty = 0,
         Slot1 = 1,
         Slot2 = 2,
         Slot3 = 3
     }
+    private static int levelAmount = 10;
+    private static int defaultAvailableLevels = 1;
 
     private static Dictionary<Slot, GameData> gameDataDictionary;
+    private static Slot currentSlot = Slot.Empty;
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     private static void Initialize()
@@ -34,6 +38,7 @@ public static class SaveManager
         {
             string filePath = GetSlotPath(slot.ToString());
             MakeSureSlotFileExists(filePath);
+            MakeSureSlotFileInCorrectFormat(filePath);
 
             string json = File.ReadAllText(filePath);
             return JsonUtility.FromJson<GameData>(json);
@@ -74,35 +79,81 @@ public static class SaveManager
         }
         if (!File.Exists(slotFilePath))
         {
-            File.WriteAllText(slotFilePath, JsonUtility.ToJson(new GameData(), true));
+            File.WriteAllText(slotFilePath, JsonUtility.ToJson(
+                new GameData(
+                    levelAmount,
+                    defaultAvailableLevels
+                ),
+                true
+            ));
         }
     }
 
-    public static GameData GetDataFromSlot(Slot slot)
+    private static void MakeSureSlotFileInCorrectFormat(string slotFilePath)
     {
-        if (gameDataDictionary.TryGetValue(slot, out GameData data))
+        string json = File.ReadAllText(slotFilePath);
+        try
         {
-            return data;
+            GameData data = JsonUtility.FromJson<GameData>(json);
+
+            int availableLevels = 0;
+            for (int i = 0; i < data.isLevelAvailable.Length; i++)
+            {
+                if (data.isLevelAvailable[i])
+                    availableLevels++;
+            }
+
+            if (data.isLevelAvailable.Length != levelAmount || availableLevels < defaultAvailableLevels)
+            {
+                File.WriteAllText(slotFilePath, JsonUtility.ToJson(
+                    new GameData(
+                        levelAmount,
+                        defaultAvailableLevels
+                    ),
+                    true
+                ));
+            }
         }
-        return null;
+        catch
+        {
+            File.WriteAllText(slotFilePath, JsonUtility.ToJson(
+                new GameData(
+                    levelAmount,
+                    defaultAvailableLevels
+                ),
+                true
+            ));
+        }
     }
 
     private static string GetSlotPath(string slotName)
     {
         return System.IO.Path.Combine(Application.persistentDataPath, "DataSlots", slotName);
     }
+
+    public static GameData GetDataFromCurrentSlot()
+    {
+        if (gameDataDictionary.TryGetValue(currentSlot, out GameData data))
+        {
+            return data;
+        }
+        return null;
+    }
+
+    public static void SetCurrentSlot(Slot slot) => currentSlot = slot;
+    public static void EmptyCurrentSlot() => currentSlot = Slot.Empty;
 }
 
 public class GameData
 {
-    public bool level1;
-    public bool level2;
-    public bool level3;
-    public bool level4;
-    public bool level5;
-    public bool level6;
-    public bool level7;
-    public bool level8;
-    public bool level9;
-    public bool level10;
+    public bool[] isLevelAvailable;
+
+    public GameData(int levelCount, int defaultAvailableLevels)
+    {
+        isLevelAvailable = new bool[levelCount];
+        for (int i = 0; i < defaultAvailableLevels; i++)
+        {
+            isLevelAvailable[i] = true;
+        }
+    }
 }

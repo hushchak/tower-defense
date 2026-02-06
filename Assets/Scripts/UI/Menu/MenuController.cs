@@ -15,7 +15,6 @@ public class MenuController : MonoBehaviour
 
     public void Open(Window window)
     {
-        Debug.Log(windows.Count);
         if (windows.Count >= 1)
         {
             windows.Peek().Close();
@@ -23,13 +22,10 @@ public class MenuController : MonoBehaviour
 
         windows.Push(window);
         windows.Peek().Open();
-        Debug.Log($"Opening {window.gameObject.name}");
-        Debug.Log(windows.Count);
     }
 
     public void Close()
     {
-        Debug.Log($"Try to close {windows.Peek().gameObject.name}");
         if (windows.Count > 1)
         {
             windows.Pop().Close();
