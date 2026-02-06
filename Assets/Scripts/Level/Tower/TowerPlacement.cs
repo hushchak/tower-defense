@@ -51,7 +51,7 @@ public class TowerPlacement : MonoBehaviour
         placementActivated = false;
         if (currentTowerPreview != null)
         {
-            Destroy(currentTowerPreview);
+            Destroy(currentTowerPreview.gameObject);
             currentTowerPreview = null;
         }
     }
@@ -70,7 +70,7 @@ public class TowerPlacement : MonoBehaviour
         if (TowerGrid.Instance.PositionInsideGrid(mouseWorldPosition))
         {
             currentTowerPreview.Show();
-            if(TowerGrid.Instance.CanPlaceTower(mouseWorldPosition, out Vector2 cellPosition))
+            if (TowerGrid.Instance.CanPlaceTower(mouseWorldPosition, out Vector2 cellPosition))
             {
                 currentTowerPreview.UnplaceableColor(false);
             }
