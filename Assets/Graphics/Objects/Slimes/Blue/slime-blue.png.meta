@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: dce3d522bbbcb40acb0214b1e61abdd2
+guid: 9ac52733845a543feb868680209be8b5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1059738302166683809
-    second: test-tower-mini_0
+      213: 3119871622522786401
+    second: slime-blue_0
+  - first:
+      213: -2940351720668018071
+    second: slime-blue_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +49,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -100,23 +103,45 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: test-tower-mini_0
+      name: slime-blue_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 8
-        height: 13
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1a0558ffe52f4be00800000000000000
-      internalID: 1059738302166683809
+      spriteID: 162da4df5b20c4b20800000000000000
+      internalID: 3119871622522786401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime-blue_1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 96acfde40b5c137d0800000000000000
+      internalID: -2940351720668018071
       vertices: []
       indices: 
       edges: []
@@ -125,7 +150,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 78a6437949b2b4d9db78d87ddfb8354d
     internalID: 0
     vertices: []
     indices: 
@@ -133,9 +158,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":16.0,"y":16.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      test-tower-mini_0: 1059738302166683809
+      slime-blue_0: 3119871622522786401
+      slime-blue_1: -2940351720668018071
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
