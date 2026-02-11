@@ -4,6 +4,7 @@ using UnityEngine;
 public class TowerPlacement : MonoBehaviour
 {
     [SerializeField] private EventChannelITowerCard triggerTowerPlacementChannel;
+    [SerializeField] private Sound towerPlacedSound;
 
     private bool placementActivated = false;
     private ITowerCard currentTowerCard;
@@ -101,6 +102,7 @@ public class TowerPlacement : MonoBehaviour
             {
                 PlayerMoney.Instance.TryDecreaseMoney(currentTowerCard.GetCost());
                 ClearCurrentSelection();
+                Audio.Play(towerPlacedSound);
             }
         }
     }

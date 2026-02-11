@@ -70,6 +70,8 @@ public class Enemy : MonoBehaviour, IDamageable
             ? 0
             : health;
 
+        Audio.Play(data.HurtSound);
+
         if (health == 0)
         {
             Death();

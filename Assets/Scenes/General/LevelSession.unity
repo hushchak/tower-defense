@@ -164,6 +164,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TowerPlacement
   triggerTowerPlacementChannel: {fileID: 11400000, guid: c82fb9a59de1843978d636e0f3912bbc, type: 2}
+  towerPlacedSound:
+    Clip: {fileID: 8300000, guid: 5d3278a9d506f4e4ca29ce1f74080c4d, type: 3}
+    Volume: 1
+    Pitch: 1
+    RandomPitch: 0
 --- !u!1 &752246075
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,7 +228,6 @@ GameObject:
   m_Component:
   - component: {fileID: 953470096}
   - component: {fileID: 953470099}
-  - component: {fileID: 953470098}
   - component: {fileID: 953470097}
   m_Layer: 0
   m_Name: Main Camera
@@ -291,14 +295,6 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
---- !u!81 &953470098
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 953470095}
-  m_Enabled: 1
 --- !u!20 &953470099
 Camera:
   m_ObjectHideFlags: 0
@@ -410,6 +406,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMoney
   moneyChangedChannel: {fileID: 11400000, guid: df85d83e79c3342eab0839756cdbe806, type: 2}
+  moneyAddSound:
+    Clip: {fileID: 8300000, guid: 047870b72d863444a9068fc3d93dda81, type: 3}
+    Volume: 1
+    Pitch: 1
+    RandomPitch: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

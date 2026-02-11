@@ -17,3 +17,8 @@ MonoBehaviour:
   <Damage>k__BackingField: 5
   <MoneyValue>k__BackingField: 10
   <Prefab>k__BackingField: {fileID: 4611322707446475689, guid: cc39263fe7aa34a65b265addf952e996, type: 3}
+  <HurtSound>k__BackingField:
+    Clip: {fileID: 8300000, guid: cc115fae0ab8b4c8eac98bfd40684f77, type: 3}
+    Volume: 1
+    Pitch: 1
+    RandomPitch: 0

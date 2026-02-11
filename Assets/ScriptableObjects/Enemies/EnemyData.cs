@@ -9,4 +9,6 @@ public class EnemyData : ScriptableObject
     [field: SerializeField] public int MoneyValue { get; private set; }
     [field: Space]
     [field: SerializeField] public GameObject Prefab { get; private set; }
+    [field: Space]
+    [field: SerializeField] public Sound HurtSound { get; private set; }
 }

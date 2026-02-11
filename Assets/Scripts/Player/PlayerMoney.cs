@@ -4,6 +4,7 @@ using UnityEngine;
 public class PlayerMoney : Singleton<PlayerMoney>, ILevelInitializable
 {
     [SerializeField] private EventChannelInt moneyChangedChannel;
+    [SerializeField] private Sound moneyAddSound;
     private int money;
 
     public void Initialize(LevelData data)
@@ -15,6 +16,7 @@ public class PlayerMoney : Singleton<PlayerMoney>, ILevelInitializable
     {
         money += amount;
         moneyChangedChannel.Raise(money);
+        Audio.Play(moneyAddSound);
     }
 
     public bool TryDecreaseMoney(int amount)
