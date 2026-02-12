@@ -5,6 +5,7 @@ public class TowerPlacement : MonoBehaviour
 {
     [SerializeField] private EventChannelITowerCard triggerTowerPlacementChannel;
     [SerializeField] private Sound towerPlacedSound;
+    [SerializeField] private Sound towerPlacementDeniedSound;
 
     private bool placementActivated = false;
     private ITowerCard currentTowerCard;
@@ -103,6 +104,10 @@ public class TowerPlacement : MonoBehaviour
                 PlayerMoney.Instance.TryDecreaseMoney(currentTowerCard.GetCost());
                 ClearCurrentSelection();
                 Audio.Play(towerPlacedSound);
+            }
+            else
+            {
+                Audio.Play(towerPlacementDeniedSound);
             }
         }
     }

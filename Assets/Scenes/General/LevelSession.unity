@@ -169,6 +169,11 @@ MonoBehaviour:
     Volume: 1
     Pitch: 1
     RandomPitch: 0
+  towerPlacementDeniedSound:
+    Clip: {fileID: 8300000, guid: 0e955d44290ac45acb38cf2e23992eda, type: 3}
+    Volume: 1
+    Pitch: 1
+    RandomPitch: 0
 --- !u!1 &752246075
 GameObject:
   m_ObjectHideFlags: 0

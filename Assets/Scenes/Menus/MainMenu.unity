@@ -308,7 +308,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ButtonSound
   sound:
-    Clip: {fileID: 8300000, guid: 0e955d44290ac45acb38cf2e23992eda, type: 3}
+    Clip: {fileID: 8300000, guid: eab304c0a5d4449918bab97259151c6d, type: 3}
     Volume: 1
     Pitch: 1
     RandomPitch: 0
@@ -2020,7 +2020,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ButtonSound
   sound:
-    Clip: {fileID: 8300000, guid: 0e955d44290ac45acb38cf2e23992eda, type: 3}
+    Clip: {fileID: 8300000, guid: eab304c0a5d4449918bab97259151c6d, type: 3}
     Volume: 1
     Pitch: 1
     RandomPitch: 0
@@ -2901,7 +2901,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ButtonSound
   sound:
-    Clip: {fileID: 8300000, guid: 0e955d44290ac45acb38cf2e23992eda, type: 3}
+    Clip: {fileID: 8300000, guid: eab304c0a5d4449918bab97259151c6d, type: 3}
     Volume: 1
     Pitch: 1
     RandomPitch: 0

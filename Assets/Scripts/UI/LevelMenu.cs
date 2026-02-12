@@ -23,6 +23,7 @@ public class LevelMenu : MonoBehaviour
     {
         try
         {
+            SaveManager.EmptyCurrentSlot();
             await SceneLoader.LoadScene(SceneData.Tags.Main, SceneData.Names.MainMenu, true);
         }
         catch (Exception e)
@@ -33,7 +34,6 @@ public class LevelMenu : MonoBehaviour
 
     public void LoadLevel(LevelDataSO data)
     {
-        SaveManager.EmptyCurrentSlot();
         LevelLoader.LoadLevel(data);
     }
 }

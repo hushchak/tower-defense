@@ -36,6 +36,19 @@ public class TowerGrid : Singleton<TowerGrid>
         return false;
     }
 
+    public bool TryBlockTile(Vector2 worldPosition)
+    {
+        if (grid.TryGetValue(worldPosition, out bool isTowerPlaced, out Vector2Int index))
+        {
+            if (isTowerPlaced)
+                return false;
+
+            grid.SetValue(index.x, index.y, true);
+            return true;
+        }
+        return false;
+    }
+
     public bool PositionInsideGrid(Vector2 worldPosition)
     {
         return grid.PositionInsideGrid(worldPosition);
