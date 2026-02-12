@@ -15,7 +15,7 @@ public class ButtonSound : MonoBehaviour
     }
 
     private void OnEnable() => button.onClick.AddListener(PlaySound);
-    private void OnDisable() => button.onClick.AddListener(PlaySound);
+    private void OnDisable() => button.onClick.RemoveListener(PlaySound);
 
     private void PlaySound()
     {

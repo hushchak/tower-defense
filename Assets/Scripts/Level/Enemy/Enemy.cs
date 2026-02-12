@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour, IDamageable
 {
-    public event Action Deactivated;
+    public event Action<Enemy> Deactivated;
 
     [SerializeField] private EnemyData data;
 
@@ -51,14 +51,14 @@ public class Enemy : MonoBehaviour, IDamageable
 
     private void PathEndReached()
     {
-        Deactivated?.Invoke();
+        Deactivated?.Invoke(this);
         gameObject.SetActive(false);
         PlayerHealth.Instance.TakeDamage(data.Damage);
     }
 
     private void Death()
     {
-        Deactivated?.Invoke();
+        Deactivated?.Invoke(this);
         gameObject.SetActive(false);
         PlayerMoney.Instance.AddMoney(data.MoneyValue);
     }

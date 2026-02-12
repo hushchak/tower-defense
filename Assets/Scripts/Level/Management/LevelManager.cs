@@ -75,7 +75,7 @@ public class LevelManager : MonoBehaviour
         {
             await SceneLoader.UnloadScene(SceneData.Tags.Level);
             await SceneLoader.UnloadScene(SceneData.Tags.LevelUI);
-            await SceneLoader.LoadScene(SceneData.Tags.Main, SceneData.Names.MainMenu);
+            await SceneLoader.LoadScene(SceneData.Tags.Main, SceneData.Names.LevelMenu);
         }
         catch (Exception e)
         {
@@ -90,7 +90,7 @@ public class LevelManager : MonoBehaviour
         {
             await SceneLoader.UnloadScene(SceneData.Tags.Level);
             await SceneLoader.UnloadScene(SceneData.Tags.LevelUI);
-            await SceneLoader.LoadScene(SceneData.Tags.Main, SceneData.Names.MainMenu);
+            await SceneLoader.LoadScene(SceneData.Tags.Main, SceneData.Names.LevelMenu);
         }
         catch (Exception e)
         {
