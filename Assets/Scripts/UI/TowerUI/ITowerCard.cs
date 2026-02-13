@@ -2,7 +2,7 @@ using UnityEngine;
 
 public interface ITowerCard
 {
-    public GameObject GetPrefab();
+    public Tower GetPrefab();
     public TowerPreview GetPreview();
     public int GetCost();
 

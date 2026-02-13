@@ -1,86 +1,39 @@
-using System;
 using UnityEngine;
 
-public class TowerPlacement : MonoBehaviour
+public class TowerPlacement
 {
-    [SerializeField] private EventChannelITowerCard triggerTowerPlacementChannel;
-    [SerializeField] private Sound towerPlacedSound;
-    [SerializeField] private Sound towerPlacementDeniedSound;
-
-    private bool placementActivated = false;
-    private ITowerCard currentTowerCard;
+    Transform previewParent;
     private TowerPreview currentTowerPreview;
 
-    private void OnEnable()
+    public TowerPlacement(Transform previewParent)
     {
-        triggerTowerPlacementChannel.Subscribe(TiggerTowerPlacement);
-        InputReader.OnMouseClick += OnMouseClick;
+        this.previewParent = previewParent;
     }
 
-    private void OnDisable()
+    public void CreateTowerPreview(TowerPreview preview)
     {
-        triggerTowerPlacementChannel.Unsubscribe(TiggerTowerPlacement);
-        InputReader.OnMouseClick -= OnMouseClick;
-    }
-
-    private void TiggerTowerPlacement(ITowerCard triggerTowerCard)
-    {
-        if (currentTowerCard == triggerTowerCard)
-        {
-            ClearCurrentSelection();
-            return;
-        }
-        if (triggerTowerCard.GetCost() > PlayerMoney.Instance.GetMoney())
-        {
-            Debug.Log("Cost is too big");
-            if (placementActivated)
-                ClearCurrentSelection();
-            return;
-        }
-
-        currentTowerCard = triggerTowerCard;
-        currentTowerCard.Select();
-        placementActivated = true;
-
-        currentTowerPreview = Instantiate(currentTowerCard.GetPreview(), transform);
+        currentTowerPreview = Object.Instantiate(preview, previewParent);
         currentTowerPreview.Hide();
     }
 
-    private void ClearCurrentSelection()
+    public void DestroyTowerPreview()
     {
-        currentTowerCard?.Deselect();
-        currentTowerCard = null;
-        placementActivated = false;
         if (currentTowerPreview != null)
         {
-            Destroy(currentTowerPreview.gameObject);
+            Object.Destroy(currentTowerPreview.gameObject);
             currentTowerPreview = null;
         }
     }
 
-    private void Update()
+    public void UpdateTowerPreview(Vector2 mouseWorldPosition)
     {
-        if (!placementActivated)
-            return;
-
-        UpdateTowerPreview();
-    }
-
-    private void UpdateTowerPreview()
-    {
-        Vector2 mouseWorldPosition = Camera.main.ScreenToWorldPoint(InputReader.MousePosition);
         if (TowerGrid.Instance.PositionInsideGrid(mouseWorldPosition))
         {
-            currentTowerPreview.Show();
-            if (TowerGrid.Instance.CanPlaceTower(mouseWorldPosition, out Vector2 cellPosition))
-            {
-                currentTowerPreview.UnplaceableColor(false);
-            }
-            else
-            {
-                currentTowerPreview.UnplaceableColor(true);
-            }
+            currentTowerPreview.SetUnplaceableColor(
+                !TowerGrid.Instance.CanPlaceTower(mouseWorldPosition, out Vector2 cellPosition)
+            );
             currentTowerPreview.transform.position = cellPosition;
+            currentTowerPreview.Show();
         }
         else
         {
@@ -88,32 +41,8 @@ public class TowerPlacement : MonoBehaviour
         }
     }
 
-    private void OnMouseClick(Vector2 mouseScreenPosition)
+    public bool TryPlaceTowerAt(Tower towerPrefab, Vector2 mouseWorldPosition)
     {
-        if (placementActivated)
-        {
-            if (PlayerMoney.Instance.GetMoney() < currentTowerCard.GetCost())
-            {
-                ClearCurrentSelection();
-                return;
-            }
-
-            Vector2 mouseWorldPosition = Camera.main.ScreenToWorldPoint(mouseScreenPosition);
-            if (TryPlaceTower(mouseWorldPosition))
-            {
-                PlayerMoney.Instance.TryDecreaseMoney(currentTowerCard.GetCost());
-                ClearCurrentSelection();
-                Audio.Play(towerPlacedSound);
-            }
-            else
-            {
-                Audio.Play(towerPlacementDeniedSound);
-            }
-        }
-    }
-
-    private bool TryPlaceTower(Vector2 worldPosition)
-    {
-        return TowerGrid.Instance.TryPlaceTower(worldPosition, currentTowerCard.GetPrefab());
+        return TowerGrid.Instance.TryPlaceTower(mouseWorldPosition, towerPrefab.gameObject);
     }
 }

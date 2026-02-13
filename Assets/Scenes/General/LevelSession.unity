@@ -128,6 +128,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 575847801}
+  - component: {fileID: 575847803}
   - component: {fileID: 575847802}
   m_Layer: 0
   m_Name: TowerPlacement
@@ -160,20 +161,43 @@ MonoBehaviour:
   m_GameObject: {fileID: 575847800}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65be61f9761374ef88aa0f7382ce8dd7, type: 3}
+  m_Script: {fileID: 11500000, guid: 78a9fd1bac9f64883b68cb18ecc73b0f, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TowerPlacement
-  triggerTowerPlacementChannel: {fileID: 11400000, guid: c82fb9a59de1843978d636e0f3912bbc, type: 2}
+  m_EditorClassIdentifier: Assembly-CSharp::TowerPlacementSounds
+  towerSelector: {fileID: 575847803}
   towerPlacedSound:
     Clip: {fileID: 8300000, guid: 5d3278a9d506f4e4ca29ce1f74080c4d, type: 3}
-    Volume: 1
+    Volume: 0.75
     Pitch: 1
     RandomPitch: 0
-  towerPlacementDeniedSound:
+  towerCantBePlacedSound:
     Clip: {fileID: 8300000, guid: 0e955d44290ac45acb38cf2e23992eda, type: 3}
     Volume: 1
     Pitch: 1
     RandomPitch: 0
+  towerCardSelectedSound:
+    Clip: {fileID: 8300000, guid: eab304c0a5d4449918bab97259151c6d, type: 3}
+    Volume: 1
+    Pitch: 1
+    RandomPitch: 0
+  towerCardSelectionDeniedSound:
+    Clip: {fileID: 8300000, guid: 0e955d44290ac45acb38cf2e23992eda, type: 3}
+    Volume: 1
+    Pitch: 1
+    RandomPitch: 0
+--- !u!114 &575847803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 575847800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b6c4f274b0b949c8ac3fe2e7d3b1edc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TowerSelector
+  triggerTowerPlacementChannel: {fileID: 11400000, guid: c82fb9a59de1843978d636e0f3912bbc, type: 2}
 --- !u!1 &752246075
 GameObject:
   m_ObjectHideFlags: 0

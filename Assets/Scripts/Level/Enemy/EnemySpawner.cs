@@ -48,7 +48,6 @@ public class EnemySpawner : MonoBehaviour
                     enemy.Deactivated += OnEnemyDeactivated;
                     spawnedEnemies.Add(enemy);
                     enemyCounter++;
-                    Debug.Log(enemyCounter);
 
                     await Awaitable.WaitForSecondsAsync(waveData.Actions[i].Frequency, linkedCts.Token);
                 }
@@ -81,7 +80,6 @@ public class EnemySpawner : MonoBehaviour
     {
         enemy.Deactivated -= OnEnemyDeactivated;
         enemyCounter--;
-        Debug.Log(enemyCounter);
     }
 
     private Enemy SpawnEnemy(EnemyData enemyData)

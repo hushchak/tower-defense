@@ -26,7 +26,7 @@ public class TowerCard : MonoBehaviour, ITowerCard
 
     private void OnCardClicked() => triggerTowerPlacementChannel.Raise(this);
 
-    public GameObject GetPrefab() => data.Prefab;
+    public Tower GetPrefab() => data.Prefab;
     public TowerPreview GetPreview() => data.Preview;
     public int GetCost() => data.Cost;
 

@@ -19,7 +19,7 @@ public class TowerPreview : MonoBehaviour
         spriteObject.SetActive(false);
     }
 
-    public void UnplaceableColor(bool color)
+    public void SetUnplaceableColor(bool color)
     {
         spriteRenderer.color = color ? unplaceableColor : normalColor;
     }

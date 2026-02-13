@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61e6f39b362a3467cbe4434a9d2762c0, type: 3}
   m_Name: TowerCard_Button
   m_EditorClassIdentifier: Assembly-CSharp::TowerCardData
-  <Prefab>k__BackingField: {fileID: 3815645864827756698, guid: 3501ed01444774b10bdacaa57ab248b1, type: 3}
+  <Prefab>k__BackingField: {fileID: 6318460370772357028, guid: 3501ed01444774b10bdacaa57ab248b1, type: 3}
   <Preview>k__BackingField: {fileID: 5717738198079257022, guid: 2cd539f146d6940a093d63bcda6bd756, type: 3}
   <Cost>k__BackingField: 50
   <Sprite>k__BackingField: {fileID: 21300000, guid: fdc6fac4ce3ba495f80ee57a1afc26ba, type: 3}
