@@ -1,65 +1,86 @@
 using System;
+using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 
 public class WaveManager : MonoBehaviour, ILevelInitializable
 {
-    [SerializeField] private EventChannel playerDeathEventChannel;
-    [SerializeField] private EventChannel playerWinEventChannel;
-    [Space]
-    [SerializeField] private EventChannel waveInitializeChannel;
-    [SerializeField] private EventChannel waveStartedChannel;
-    [SerializeField] private EventChannel waveDefeatedChannel;
+    public event Action WaveDefeated, WaveCancelled;
 
-    [Space]
-    [SerializeField] private EnemySpawner spawner;
+    private EnemySpawner spawner;
 
-    private WaveData[] waves;
-    private int waveIndex;
-
-    private CancellationToken playerDeathCancellationToken;
+    bool waveInProgress = false;
+    int enemyCounter;
 
     public void Initialize(LevelData data)
     {
-        waves = data.Waves;
-        waveIndex = 0;
+        spawner = data.EnemySpawner;
     }
 
-    private void OnEnable()
+    public void StartWave(WaveData waveData, CancellationToken playerDeathCancellationToken)
     {
-        waveInitializeChannel.Subscribe(StartWave);
+        SpawnWave(waveData, playerDeathCancellationToken);
     }
 
-    private void OnDisable()
+    public async void SpawnWave(WaveData waveData, CancellationToken cancellationToken)
     {
-        waveInitializeChannel.Unsubscribe(StartWave);
-    }
-
-    private async void StartWave()
-    {
-        if (waveIndex >= waves.Length || spawner.WaveInProgress)
+        if (waveInProgress)
+        {
+            Debug.LogWarning("You are trying to spawn wave while another is in progress");
             return;
+        }
 
-        playerDeathCancellationToken = new CancellationToken();
+        var linkedCts = CancellationTokenSource.CreateLinkedTokenSource(
+            cancellationToken,
+            destroyCancellationToken
+        );
+
+        List<Enemy> spawnedEnemies = new();
+
         try
         {
-            waveStartedChannel.Raise();
-            await spawner.SpawnWave(waves[waveIndex], playerDeathCancellationToken);
-            waveIndex++;
+            waveInProgress = true;
+            enemyCounter = 0;
 
-            if (waveIndex >= waves.Length)
+            for (int i = 0; i < waveData.Actions.Length; i++)
             {
-                PlayerWin();
+                for (int j = 0; j < waveData.Actions[i].Number; j++)
+                {
+                    Enemy enemy = spawner.SpawnEnemy(waveData.Actions[i].Enemy);
+                    enemy.Deactivated += OnEnemyDeactivated;
+                    spawnedEnemies.Add(enemy);
+                    enemyCounter++;
+
+                    await Awaitable.WaitForSecondsAsync(waveData.Actions[i].Frequency, linkedCts.Token);
+                }
+                await Awaitable.WaitForSecondsAsync(waveData.Actions[i].WaitTimeAfter, linkedCts.Token);
             }
+
+            while (enemyCounter > 0)
+            {
+                await Awaitable.NextFrameAsync(linkedCts.Token);
+            }
+            WaveDefeated?.Invoke();
         }
-        catch (Exception e)
+        catch (OperationCanceledException)
         {
-            Debug.LogError(e);
+            WaveCancelled?.Invoke();
+        }
+        finally
+        {
+            foreach (Enemy enemy in spawnedEnemies)
+            {
+                enemy.Deactivated -= OnEnemyDeactivated;
+            }
+
+            linkedCts.Dispose();
+            waveInProgress = false;
         }
     }
 
-    private void PlayerWin()
+    private void OnEnemyDeactivated(Enemy enemy)
     {
-        playerWinEventChannel.Raise();
+        enemy.Deactivated -= OnEnemyDeactivated;
+        enemyCounter--;
     }
 }

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerHealth : Singleton<PlayerHealth>, ILevelInitializable
 {
-    [SerializeField] private EventChannel dealthEventChannel;
+    [SerializeField] private EventChannel deathEventChannel;
     [SerializeField] private EventChannelInt healthChangedChannel;
 
     private int maxHealth;
@@ -31,6 +31,6 @@ public class PlayerHealth : Singleton<PlayerHealth>, ILevelInitializable
 
     private void Death()
     {
-        dealthEventChannel.Raise();
+        deathEventChannel.Raise();
     }
 }

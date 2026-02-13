@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c46c0a5292b6d416480a3da830380392, type: 3}
   m_Name: TowerData_Button
   m_EditorClassIdentifier: Assembly-CSharp::TowerData
+  <TargetStrategy>k__BackingField: {fileID: 11400000, guid: 4b6e24e089c18436e84e53dec9eac407, type: 2}
+  <EnemyMask>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 64
   <ProjectilePrefab>k__BackingField: {fileID: 4823629901092003825, guid: 15d440b2103fc42c99f48a2aa64e38b8, type: 3}
   <Frequency>k__BackingField: 0.75
   <Radius>k__BackingField: 1.5
@@ -20,6 +24,3 @@ MonoBehaviour:
     Volume: 1
     Pitch: 1
     RandomPitch: 0
-  <EnemyMask>k__BackingField:
-    serializedVersion: 2
-    m_Bits: 64

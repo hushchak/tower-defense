@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Tower : MonoBehaviour
@@ -12,17 +13,40 @@ public class Tower : MonoBehaviour
     {
         if (waitTime <= 0)
         {
-            Enemy target = GetClosestEnemy(data.Radius, data.EnemyMask);
-            if (target != null)
-            {
-                SpawnProjectile(target);
-                waitTime = data.Frequency;
-            }
+            Shoot();
         }
         else
         {
             waitTime -= Time.deltaTime;
         }
+    }
+
+    private void Shoot()
+    {
+        Enemy target = data.TargetStrategy.GetTarget(
+            GetEnemiesInRadius(data.Radius, data.EnemyMask),
+            transform.position,
+            data
+        );
+        if (target != null)
+        {
+            SpawnProjectile(target);
+            waitTime = data.Frequency;
+        }
+    }
+
+    private Enemy[] GetEnemiesInRadius(float radius, LayerMask enemyLayer)
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, radius, enemyLayer);
+        List<Enemy> enemyList = new();
+        foreach (Collider2D collider in colliders)
+        {
+            if (collider.gameObject.TryGetComponent(out Enemy enemy))
+            {
+                enemyList.Add(enemy);
+            }
+        }
+        return enemyList.ToArray();
     }
 
     private void SpawnProjectile(Enemy target)
@@ -40,35 +64,6 @@ public class Tower : MonoBehaviour
         if (projectilePool == null)
             projectilePool = new GameObjectPool(data.ProjectilePrefab, poolTransform, 1);
         return projectilePool.GetObject();
-    }
-
-    private Enemy GetClosestEnemy(float radius, LayerMask mask)
-    {
-        Collider2D[] targets = Physics2D.OverlapCircleAll(
-            transform.position,
-            radius,
-            mask
-        );
-
-        if (targets.Length == 0)
-            return null;
-
-        float distance = float.MaxValue;
-        int index = -1;
-        for (int i = 0; i < targets.Length; i++)
-        {
-            if (Vector2.Distance(transform.position, targets[i].transform.position) < distance)
-            {
-                distance = Vector2.Distance(transform.position, targets[i].transform.position);
-                index = i;
-            }
-        }
-
-        if (targets[index].gameObject.TryGetComponent(out Enemy enemy))
-        {
-            return enemy;
-        }
-        return null;
     }
 
     private void OnDrawGizmos()

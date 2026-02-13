@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Slime_blue
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   <HealthPoints>k__BackingField: 10
-  <Speed>k__BackingField: 1
+  <Speed>k__BackingField: 10
   <Damage>k__BackingField: 5
   <MoneyValue>k__BackingField: 10
   <Prefab>k__BackingField: {fileID: 4611322707446475689, guid: cc39263fe7aa34a65b265addf952e996, type: 3}

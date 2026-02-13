@@ -208,6 +208,8 @@ GameObject:
   m_Component:
   - component: {fileID: 752246077}
   - component: {fileID: 752246076}
+  - component: {fileID: 752246079}
+  - component: {fileID: 752246078}
   m_Layer: 0
   m_Name: Level Root
   m_TagString: Untagged
@@ -228,7 +230,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelManager
   playerWinEventChannel: {fileID: 11400000, guid: 3976826bdf95b4beeaa70ffaa4d07faf, type: 2}
-  playerDeathEventChannel: {fileID: 11400000, guid: 993365a455deb480fbf0a318336f9805, type: 2}
+  playerDefeatEventChannel: {fileID: 11400000, guid: d4bbec1afa3c04b3b83ba04bc53ce439, type: 2}
 --- !u!4 &752246077
 Transform:
   m_ObjectHideFlags: 0
@@ -247,6 +249,37 @@ Transform:
   - {fileID: 575847801}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &752246078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 752246075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5fbec75619924138832c99bb6d2d9ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WaveManager
+--- !u!114 &752246079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 752246075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57cbfdf0b79e54c419c9ac4a87eb0157, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SessionStateManager
+  waveManager: {fileID: 752246078}
+  waveInitializeChannel: {fileID: 11400000, guid: 3127749966c904ab5922f2000d8a946f, type: 2}
+  waveStartedChannel: {fileID: 11400000, guid: 4f5d628ccc0334eac9da61adf710e5f7, type: 2}
+  waveDefeatedChannel: {fileID: 11400000, guid: 8891b3a386a9a44eebd358890505f2c4, type: 2}
+  playerDeathEventChannel: {fileID: 11400000, guid: 993365a455deb480fbf0a318336f9805, type: 2}
+  playerWinEventChannel: {fileID: 11400000, guid: 3976826bdf95b4beeaa70ffaa4d07faf, type: 2}
+  playerDefeatEventChannel: {fileID: 11400000, guid: d4bbec1afa3c04b3b83ba04bc53ce439, type: 2}
 --- !u!1 &953470095
 GameObject:
   m_ObjectHideFlags: 0

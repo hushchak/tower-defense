@@ -5,7 +5,7 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour
 {
     [SerializeField] private EventChannel playerWinEventChannel;
-    [SerializeField] private EventChannel playerDeathEventChannel;
+    [SerializeField] private EventChannel playerDefeatEventChannel;
 
     public async void SetData(LevelDataSO data)
     {
@@ -52,20 +52,29 @@ public class LevelManager : MonoBehaviour
             waves: dataSO.Waves,
             playerMaxHealth: dataSO.PlayerMaxHealth,
             playerStartMoney: dataSO.PlayerStartMoney,
-            towers: dataSO.Towers
+            towers: dataSO.Towers,
+            enemySpawner: GetEnemySpawner(dataSO.LevelSceneName)
         );
+    }
+
+    private EnemySpawner GetEnemySpawner(string LevelSceneName)
+    {
+        EnemySpawner[] possibleSpawners = SceneLoader.GetObjectsOfTypeFromScene<EnemySpawner>(LevelSceneName);
+        if (possibleSpawners.Length > 0)
+            return possibleSpawners[0];
+        return null;
     }
 
     private void OnEnable()
     {
         playerWinEventChannel.Subscribe(Win);
-        playerDeathEventChannel.Subscribe(Defeat);
+        playerDefeatEventChannel.Subscribe(Defeat);
     }
 
     private void OnDisable()
     {
         playerWinEventChannel.Unsubscribe(Win);
-        playerDeathEventChannel.Unsubscribe(Defeat);
+        playerDefeatEventChannel.Unsubscribe(Defeat);
     }
 
     private async void Win()

@@ -20,8 +20,10 @@ public static class SceneLoader
 
     public static async Awaitable UnloadScene(string sceneTag)
     {
+        Debug.Log(sceneDictionary == null);
         if (sceneDictionary.TryGetValue(sceneTag, out string value))
         {
+            Debug.Log(value);
             await SceneManager.UnloadSceneAsync(value);
             sceneDictionary.Remove(sceneTag);
         }
