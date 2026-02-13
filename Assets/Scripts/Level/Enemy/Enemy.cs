@@ -1,16 +1,15 @@
 using System;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour, IDamageable
+public class Enemy : MonoBehaviour
 {
     public event Action<Enemy> Deactivated;
 
     [SerializeField] private EnemyData data;
+    [SerializeField] private EnemyHealth healthSystem;
 
     private Path path;
     private int currentPoint;
-
-    private int health;
 
     public void Setup(Path path)
     {
@@ -19,8 +18,13 @@ public class Enemy : MonoBehaviour, IDamageable
 
     private void OnEnable()
     {
+        healthSystem.Death += Die;
         currentPoint = 0;
-        health = data.HealthPoints;
+    }
+
+    private void OnDisable()
+    {
+        healthSystem.Death -= Die;
     }
 
     private void Update()
@@ -56,25 +60,10 @@ public class Enemy : MonoBehaviour, IDamageable
         PlayerHealth.Instance.TakeDamage(data.Damage);
     }
 
-    private void Death()
+    private void Die()
     {
         Deactivated?.Invoke(this);
         gameObject.SetActive(false);
         PlayerMoney.Instance.AddMoney(data.MoneyValue);
-    }
-
-    public void ApplyDamage(int damage)
-    {
-        health -= damage;
-        health = health < 0
-            ? 0
-            : health;
-
-        Audio.Play(data.HurtSound);
-
-        if (health == 0)
-        {
-            Death();
-        }
     }
 }
