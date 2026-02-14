@@ -15,5 +15,5 @@ MonoBehaviour:
   <Actions>k__BackingField:
   - <Enemy>k__BackingField: {fileID: 11400000, guid: 5139470755e1d4c73876b761eb02a561, type: 2}
     <Number>k__BackingField: 10
-    <Frequency>k__BackingField: 0.1
+    <Frequency>k__BackingField: 1.75
     <WaitTimeAfter>k__BackingField: 1

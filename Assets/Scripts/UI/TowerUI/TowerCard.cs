@@ -4,11 +4,18 @@ using UnityEngine.UI;
 
 public class TowerCard : MonoBehaviour, ITowerCard
 {
+    [Header("Components")]
     [SerializeField] private EventChannelITowerCard triggerTowerPlacementChannel;
+    [SerializeField] private Button button;
+    [SerializeField] private Image background;
+
+    [Header("Visuals")]
     [SerializeField] private TMP_Text cardName;
     [SerializeField] private TMP_Text cardCost;
     [SerializeField] private Image image;
-    [SerializeField] private Button button;
+    [Space]
+    [SerializeField] private Sprite normalSprite;
+    [SerializeField] private Sprite selectedSprite;
 
     private TowerCardData data;
 
@@ -32,11 +39,11 @@ public class TowerCard : MonoBehaviour, ITowerCard
 
     public void Select()
     {
-        Debug.Log($"{data.Name} is selected");
+        background.sprite = selectedSprite;
     }
 
     public void Deselect()
     {
-        Debug.Log($"{data.Name} is deselected");
+        background.sprite = normalSprite;
     }
 }
