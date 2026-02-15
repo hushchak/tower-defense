@@ -35,6 +35,9 @@ public class TowerSelector : MonoBehaviour, ILevelInitializable
             return;
 
         Vector2 mouseWorldPosition = Camera.main.ScreenToWorldPoint(mouseScreenPosition);
+        if (!placement.InRangeForPlacement(mouseWorldPosition))
+            return;
+
         if (placement.TryPlaceTowerAt(currentTowerCard.GetPrefab(), mouseWorldPosition))
         {
             PlayerMoney.Instance.DecreaseMoney(currentTowerCard.GetCost());
@@ -68,8 +71,7 @@ public class TowerSelector : MonoBehaviour, ILevelInitializable
 
     private bool CanSelectCard(ITowerCard towerCard)
     {
-        return (towerCard != currentTowerCard)
-        && (towerCard.GetCost() <= PlayerMoney.Instance.GetMoney());
+        return (towerCard.GetCost() <= PlayerMoney.Instance.GetMoney()) && (towerCard != currentTowerCard);
     }
 
     private void Update()

@@ -89,7 +89,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5335973617636524177}
   - component: {fileID: 4875245509450839226}
-  - component: {fileID: 5831519766381229866}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -161,7 +160,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 5785563379565504527, guid: 26a4f3f06c7eb429984b79f176514d59, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a493d7cd00ef840149e4854281fdd119, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -171,18 +170,3 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &5831519766381229866
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5538487699221617641}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81c18fc6bf24a42bd844c2f6aa3bfe5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ScribbleEffect
-  frequency: 1
-  positionScatter: 0.05
-  rotationScatter: 30

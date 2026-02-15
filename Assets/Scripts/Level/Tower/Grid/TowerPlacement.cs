@@ -45,4 +45,9 @@ public class TowerPlacement
     {
         return TowerGrid.Instance.TryPlaceTower(mouseWorldPosition, towerPrefab.gameObject);
     }
+
+    public bool InRangeForPlacement(Vector2 mouseWorldPosition)
+    {
+        return TowerGrid.Instance.PositionInsideGrid(mouseWorldPosition);
+    }
 }

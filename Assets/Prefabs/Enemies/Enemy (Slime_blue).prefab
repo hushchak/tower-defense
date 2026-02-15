@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3188991387785613884}
   - component: {fileID: 8144551860155103664}
   - component: {fileID: 9168712182766231247}
-  - component: {fileID: 1659813875557568339}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -83,7 +82,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 533378072708315792, guid: a967373c005f142629947bbc8b51bea3, type: 3}
+  m_Sprite: {fileID: 3119871622522786401, guid: 06ae64385304f494a9ffe9c862cfe860, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -106,21 +105,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::YSortDynamic
   spriteRenderer: {fileID: 8144551860155103664}
---- !u!114 &1659813875557568339
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1473005636824674005}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81c18fc6bf24a42bd844c2f6aa3bfe5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ScribbleEffect
-  frequency: 1
-  positionScatter: 0.05
-  rotationScatter: 30
 --- !u!1 &4611322707446475689
 GameObject:
   m_ObjectHideFlags: 0
