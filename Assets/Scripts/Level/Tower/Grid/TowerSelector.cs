@@ -69,6 +69,8 @@ public class TowerSelector : MonoBehaviour, ILevelInitializable
             return;
         }
 
+        currentTowerCard?.Deselect();
+
         currentTowerCard = triggerTowerCard;
         currentTowerCard.Select();
         TowerCardSelected?.Invoke();
