@@ -37,12 +37,15 @@ public static class Audio
         {
             case Mixer.Master:
                 audioMixer.SetFloat("MasterVolume", Mathf.Log10(value) * 20f);
+                SaveManager.GetPreferencesData().MasterVolume = value;
                 break;
             case Mixer.SoundFX:
                 audioMixer.SetFloat("SoundFXVolume", Mathf.Log10(value) * 20f);
+                SaveManager.GetPreferencesData().SoundFXVolume = value;
                 break;
             case Mixer.Music:
                 audioMixer.SetFloat("MusicVolume", Mathf.Log10(value) * 20f);
+                SaveManager.GetPreferencesData().MusicVolume = value;
                 break;
         }
     }
