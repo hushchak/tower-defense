@@ -4,6 +4,7 @@ public class LevelMenuController : MonoBehaviour
 {
     [Header("General")]
     [SerializeField] private MenuController menuController;
+    [SerializeField] private Window emptyWindow;
     [SerializeField] private Window pauseMenuWindow;
     [SerializeField] private Window winWindow;
     [SerializeField] private Window loseWindow;
@@ -37,7 +38,7 @@ public class LevelMenuController : MonoBehaviour
         if (SessionStateManager.Instance.IsPaused)
             menuController.Open(pauseMenuWindow);
         else
-            menuController.Close();
+            menuController.ForceOpen(emptyWindow);
     }
 
     private void OpenWinWindow()
@@ -70,6 +71,6 @@ public class LevelMenuController : MonoBehaviour
             return;
 
         SessionStateManager.Instance.Pause(false);
-        menuController.Close();
+        menuController.ForceOpen(emptyWindow);
     }
 }
