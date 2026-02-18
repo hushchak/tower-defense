@@ -32,4 +32,13 @@ public class MenuController : MonoBehaviour
             windows.Peek().Open();
         }
     }
+
+    public void ForceOpen(Window window)
+    {
+        while (windows.Count > 0)
+        {
+            windows.Pop().Close();
+        }
+        window.Open();
+    }
 }

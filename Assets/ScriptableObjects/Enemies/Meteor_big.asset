@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 031c0d06475de488da1eba55931fb2ff, type: 3}
+  m_Name: Meteor_big
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyData
+  <HealthPoints>k__BackingField: 30
+  <Speed>k__BackingField: 1
+  <Damage>k__BackingField: 15
+  <MoneyValue>k__BackingField: 20
+  <Prefab>k__BackingField: {fileID: 5689334069331129128, guid: 51cadce36560d4817ab5e66694dbf2b0, type: 3}
+  <HurtSound>k__BackingField:
+    Clip: {fileID: 8300000, guid: cc115fae0ab8b4c8eac98bfd40684f77, type: 3}
+    Volume: 1
+    Pitch: 1
+    RandomPitch: 0

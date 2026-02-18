@@ -51,9 +51,9 @@ public class WaveManager : MonoBehaviour, ILevelInitializable
                     spawnedEnemies.Add(enemy);
                     enemyCounter++;
 
-                    await Awaitable.WaitForSecondsAsync(waveData.Actions[i].Frequency, linkedCts.Token);
+                    await WaitWithPause(waveData.Actions[i].Frequency, linkedCts.Token);
                 }
-                await Awaitable.WaitForSecondsAsync(waveData.Actions[i].WaitTimeAfter, linkedCts.Token);
+                await WaitWithPause(waveData.Actions[i].WaitTimeAfter, linkedCts.Token);
             }
 
             while (enemyCounter > 0)
@@ -82,5 +82,21 @@ public class WaveManager : MonoBehaviour, ILevelInitializable
     {
         enemy.Deactivated -= OnEnemyDeactivated;
         enemyCounter--;
+    }
+
+    private async Awaitable WaitWithPause(float seconds, CancellationToken cancellationToken)
+    {
+        float elapsed = 0f;
+
+        while (elapsed < seconds)
+        {
+            while (SessionStateManager.Instance.IsPaused)
+            {
+                await Awaitable.NextFrameAsync(cancellationToken);
+            }
+
+            await Awaitable.NextFrameAsync(cancellationToken);
+            elapsed += Time.deltaTime;
+        }
     }
 }

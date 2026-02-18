@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbd2a5db74227471681486c16bf94a93, type: 3}
+  m_Name: LevelData_level8
+  m_EditorClassIdentifier: Assembly-CSharp::LevelDataSO
+  <LevelSceneName>k__BackingField: Level08
+  <NextUnlockableLevelIndex>k__BackingField: 9
+  <Waves>k__BackingField: []
+  <Towers>k__BackingField:
+  - {fileID: 11400000, guid: 71db5650bcfeb469195cbf8d21e203dd, type: 2}
+  - {fileID: 11400000, guid: 9c67889d1cb5448e68cc86be656646b9, type: 2}
+  - {fileID: 11400000, guid: a08bddcf6f1394dc7ab87a2af4531070, type: 2}
+  <PlayerMaxHealth>k__BackingField: 45
+  <PlayerStartMoney>k__BackingField: 135

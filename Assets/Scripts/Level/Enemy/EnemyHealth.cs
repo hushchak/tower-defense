@@ -8,6 +8,8 @@ public class EnemyHealth : MonoBehaviour, IDamageable
     public event Action Death;
     private int health;
 
+    public int GetHealth() => health;
+
     private void OnEnable()
     {
         health = data.HealthPoints;

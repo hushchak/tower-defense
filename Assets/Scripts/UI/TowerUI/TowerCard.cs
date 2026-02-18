@@ -31,7 +31,13 @@ public class TowerCard : MonoBehaviour, ITowerCard
         image.sprite = data.Sprite;
     }
 
-    private void OnCardClicked() => triggerTowerPlacementChannel.Raise(this);
+    private void OnCardClicked()
+    {
+        if (SessionStateManager.Instance.IsPaused)
+            return;
+
+        triggerTowerPlacementChannel.Raise(this);
+    }
 
     public Tower GetPrefab() => data.Prefab;
     public TowerPreview GetPreview() => data.Preview;

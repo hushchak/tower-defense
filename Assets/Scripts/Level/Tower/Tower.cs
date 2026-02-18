@@ -6,19 +6,48 @@ public class Tower : MonoBehaviour
     [SerializeField] private TowerData data;
     [SerializeField] private Transform poolTransform;
 
+    [Space]
+    [SerializeField] private GameObject spriteObject;
+    [SerializeField] private float rotationSpeed = 200f;
+    [SerializeField] private float angleOffset;
+
     private float waitTime = 0;
     private GameObjectPool projectilePool;
 
     private void Update()
     {
+        if (SessionStateManager.Instance.IsPaused)
+            return;
+
         if (waitTime <= 0)
         {
             Shoot();
         }
         else
         {
+            RotateToTarget(data.TargetStrategy.GetTarget(
+                GetEnemiesInRadius(data.Radius, data.EnemyMask),
+                transform.position,
+                data
+            ));
             waitTime -= Time.deltaTime;
         }
+    }
+
+    private void RotateToTarget(Enemy enemy)
+    {
+        if (enemy == null)
+            return;
+
+        Vector2 direction = (enemy.transform.position - transform.position).normalized;
+        float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + angleOffset;
+
+        Quaternion targetRotation = Quaternion.Euler(0, 0, targetAngle);
+        spriteObject.transform.rotation = Quaternion.RotateTowards(
+            spriteObject.transform.rotation,
+            targetRotation,
+            rotationSpeed * Time.deltaTime
+        );
     }
 
     private void Shoot()

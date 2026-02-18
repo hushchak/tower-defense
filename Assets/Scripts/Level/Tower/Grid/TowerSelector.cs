@@ -7,6 +7,7 @@ public class TowerSelector : MonoBehaviour, ILevelInitializable
 
     [Header("Events")]
     [SerializeField] private EventChannelITowerCard triggerTowerPlacementChannel;
+    [SerializeField] private EventChannel pauseChannel;
 
     private bool placementActivated = false;
     private TowerPlacement placement;
@@ -20,12 +21,14 @@ public class TowerSelector : MonoBehaviour, ILevelInitializable
     private void OnEnable()
     {
         triggerTowerPlacementChannel.Subscribe(TiggerTowerPlacement);
+        pauseChannel.Subscribe(OnPause);
         InputReader.OnMouseClick += OnMouseClick;
     }
 
     private void OnDisable()
     {
         triggerTowerPlacementChannel.Unsubscribe(TiggerTowerPlacement);
+        pauseChannel.Subscribe(OnPause);
         InputReader.OnMouseClick -= OnMouseClick;
     }
 
@@ -49,6 +52,11 @@ public class TowerSelector : MonoBehaviour, ILevelInitializable
             ClearCurrentSelection();
             TowerCantBePlaced?.Invoke();
         }
+    }
+
+    private void OnPause()
+    {
+        ClearCurrentSelection();
     }
 
     private void TiggerTowerPlacement(ITowerCard triggerTowerCard)

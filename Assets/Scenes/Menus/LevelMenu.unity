@@ -338,7 +338,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 627241952}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1082220838}
+        m_TargetAssemblyTypeName: LevelMenu, Assembly-CSharp
+        m_MethodName: LoadLevel
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: ad5fc9a4c8bba4f968f69fa0d9b9d79d, type: 2}
+          m_ObjectArgumentAssemblyTypeName: LevelDataSO, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &226622562
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -446,7 +458,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 652104576}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1082220838}
+        m_TargetAssemblyTypeName: LevelMenu, Assembly-CSharp
+        m_MethodName: LoadLevel
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: c9248a20dc2c442d3b8f22de79b42b91, type: 2}
+          m_ObjectArgumentAssemblyTypeName: LevelDataSO, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &278528164
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1010,7 +1034,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2118370590}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1082220838}
+        m_TargetAssemblyTypeName: LevelMenu, Assembly-CSharp
+        m_MethodName: LoadLevel
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 7dffeeb047c254a0a8a611c48bc29e46, type: 2}
+          m_ObjectArgumentAssemblyTypeName: LevelDataSO, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &827755335
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1118,7 +1154,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1371530529}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1082220838}
+        m_TargetAssemblyTypeName: LevelMenu, Assembly-CSharp
+        m_MethodName: LoadLevel
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: c7a03870176e34a4881b390af346761c, type: 2}
+          m_ObjectArgumentAssemblyTypeName: LevelDataSO, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &1047300237
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1226,7 +1274,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1705389778}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1082220838}
+        m_TargetAssemblyTypeName: LevelMenu, Assembly-CSharp
+        m_MethodName: LoadLevel
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: e70b223b3cbd54fb696a6dbce3b09d68, type: 2}
+          m_ObjectArgumentAssemblyTypeName: LevelDataSO, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &1062519353
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1649,7 +1709,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 164867696}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1082220838}
+        m_TargetAssemblyTypeName: LevelMenu, Assembly-CSharp
+        m_MethodName: LoadLevel
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: afd469e264e1d427fa8fc59bffa4d25a, type: 2}
+          m_ObjectArgumentAssemblyTypeName: LevelDataSO, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &1225537792
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1885,7 +1957,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1753103785}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1082220838}
+        m_TargetAssemblyTypeName: LevelMenu, Assembly-CSharp
+        m_MethodName: LoadLevel
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 11b021241a1d341e6b848b37397a1d85, type: 2}
+          m_ObjectArgumentAssemblyTypeName: LevelDataSO, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &1268755876
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2460,7 +2544,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1151233230}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1082220838}
+        m_TargetAssemblyTypeName: LevelMenu, Assembly-CSharp
+        m_MethodName: LoadLevel
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 8ae183229346d48ce9bf8469870deba1, type: 2}
+          m_ObjectArgumentAssemblyTypeName: LevelDataSO, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &1564627742
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2842,7 +2938,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1829413848}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1082220838}
+        m_TargetAssemblyTypeName: LevelMenu, Assembly-CSharp
+        m_MethodName: LoadLevel
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 23a5ea256278e468c90172bf78b7be9c, type: 2}
+          m_ObjectArgumentAssemblyTypeName: LevelDataSO, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &1753418139
 CanvasRenderer:
   m_ObjectHideFlags: 0

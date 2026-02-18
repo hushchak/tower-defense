@@ -13,7 +13,7 @@ public static class SceneData
         public const string LevelMenu = "LevelMenu";
         public const string LevelSession = "LevelSession";
         public const string LevelUI = "LevelUI";
-        public const string Level00t = "Level00t";
-        public const string Level01t = "Level01t";
+        public const string Level01 = "Level01";
+        public const string Level02 = "Level02";
     }
 }

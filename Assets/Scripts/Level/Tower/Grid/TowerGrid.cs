@@ -9,8 +9,9 @@ public class TowerGrid : Singleton<TowerGrid>
     [SerializeField] private Vector2 gridCellSize;
     [SerializeField] private Vector2 gridOrigin;
 
-    [Space]
-    [SerializeField] private bool gizmos;
+    [Header("Gizmos")]
+    [SerializeField] private bool gizmosGrid;
+    [SerializeField] private bool gizmosText;
 
     private Grid<bool> grid;
 
@@ -79,14 +80,15 @@ public class TowerGrid : Singleton<TowerGrid>
 
     private void OnDrawGizmos()
     {
-        if (!gizmos)
-            return;
-
-        DrawGrid();
-        if (grid == null)
-            DisplayIndexes();
-        else
-            DisplayValues();
+        if (gizmosGrid)
+            DrawGrid();
+        if (gizmosText)
+        {
+            if (grid == null)
+                DisplayIndexes();
+            else
+                DisplayValues();
+        }
     }
 
     private void DisplayValues()

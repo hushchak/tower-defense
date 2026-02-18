@@ -198,6 +198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TowerSelector
   triggerTowerPlacementChannel: {fileID: 11400000, guid: c82fb9a59de1843978d636e0f3912bbc, type: 2}
+  pauseChannel: {fileID: 11400000, guid: baa03e93056834a0fa860b0968ecc4bd, type: 2}
 --- !u!1 &752246075
 GameObject:
   m_ObjectHideFlags: 0
@@ -210,6 +211,7 @@ GameObject:
   - component: {fileID: 752246076}
   - component: {fileID: 752246079}
   - component: {fileID: 752246078}
+  - component: {fileID: 752246080}
   m_Layer: 0
   m_Name: Level Root
   m_TagString: Untagged
@@ -229,8 +231,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1eef459d9d14b42c688f6b6548fcd3f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelManager
-  playerWinEventChannel: {fileID: 11400000, guid: 3976826bdf95b4beeaa70ffaa4d07faf, type: 2}
-  playerDefeatEventChannel: {fileID: 11400000, guid: d4bbec1afa3c04b3b83ba04bc53ce439, type: 2}
+  playerWinChannel: {fileID: 11400000, guid: 3976826bdf95b4beeaa70ffaa4d07faf, type: 2}
+  playerDefeatChannel: {fileID: 11400000, guid: d4bbec1afa3c04b3b83ba04bc53ce439, type: 2}
+  endLevelChannel: {fileID: 11400000, guid: 80dcd1d09fc9f472b844aba7701d78aa, type: 2}
 --- !u!4 &752246077
 Transform:
   m_ObjectHideFlags: 0
@@ -280,6 +283,19 @@ MonoBehaviour:
   playerDeathEventChannel: {fileID: 11400000, guid: 993365a455deb480fbf0a318336f9805, type: 2}
   playerWinEventChannel: {fileID: 11400000, guid: 3976826bdf95b4beeaa70ffaa4d07faf, type: 2}
   playerDefeatEventChannel: {fileID: 11400000, guid: d4bbec1afa3c04b3b83ba04bc53ce439, type: 2}
+  pauseChannel: {fileID: 11400000, guid: baa03e93056834a0fa860b0968ecc4bd, type: 2}
+--- !u!114 &752246080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 752246075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32529a73261ae4860b8b4f83de11a14c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PauseLevel
 --- !u!1 &953470095
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,7 +307,6 @@ GameObject:
   - component: {fileID: 953470096}
   - component: {fileID: 953470099}
   - component: {fileID: 953470097}
-  - component: {fileID: 953470100}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -393,7 +408,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 5.625
+  orthographic size: 7
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -409,30 +424,6 @@ Camera:
   m_OcclusionCulling: 0
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!114 &953470100
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 953470095}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c88f5cead0c0b2a4eb05b5900433f8d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.2D.Runtime::UnityEngine.Rendering.Universal.PixelPerfectCamera
-  m_ComponentVersion: 1
-  m_AssetsPPU: 16
-  m_RefResolutionX: 320
-  m_RefResolutionY: 180
-  m_CropFrame: 4
-  m_GridSnapping: 2
-  m_FilterMode: 0
-  m_UpscaleRT: 0
-  m_PixelSnapping: 0
-  m_CropFrameX: 0
-  m_CropFrameY: 0
-  m_StretchFill: 0
 --- !u!1 &1156325081
 GameObject:
   m_ObjectHideFlags: 0

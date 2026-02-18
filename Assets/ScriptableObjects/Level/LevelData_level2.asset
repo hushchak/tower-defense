@@ -13,7 +13,16 @@ MonoBehaviour:
   m_Name: LevelData_level2
   m_EditorClassIdentifier: Assembly-CSharp::LevelDataSO
   <LevelSceneName>k__BackingField: Level02
-  <Waves>k__BackingField: []
-  <Towers>k__BackingField: []
-  <PlayerMaxHealth>k__BackingField: 50
-  <PlayerStartMoney>k__BackingField: 100
+  <NextUnlockableLevelIndex>k__BackingField: 3
+  <Waves>k__BackingField:
+  - {fileID: 11400000, guid: 05547a7df6c0244f48e1352a0ccac9ce, type: 2}
+  - {fileID: 11400000, guid: 8ba781c1479bb40568f91ca2af37c6d3, type: 2}
+  - {fileID: 11400000, guid: 99549f0f3c2a0460f98c4ba60d09439e, type: 2}
+  - {fileID: 11400000, guid: dbcfa103b1d8a4639a8bce36ee17445a, type: 2}
+  - {fileID: 11400000, guid: e21d598901a2e4426859239d7a4f0574, type: 2}
+  <Towers>k__BackingField:
+  - {fileID: 11400000, guid: 71db5650bcfeb469195cbf8d21e203dd, type: 2}
+  - {fileID: 11400000, guid: 9c67889d1cb5448e68cc86be656646b9, type: 2}
+  - {fileID: 11400000, guid: a08bddcf6f1394dc7ab87a2af4531070, type: 2}
+  <PlayerMaxHealth>k__BackingField: 45
+  <PlayerStartMoney>k__BackingField: 135

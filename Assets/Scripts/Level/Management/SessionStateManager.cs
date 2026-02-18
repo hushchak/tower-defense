@@ -2,7 +2,7 @@ using UnityEngine;
 using System;
 using System.Threading;
 
-public class SessionStateManager : MonoBehaviour, ILevelInitializable
+public class SessionStateManager : Singleton<SessionStateManager>, ILevelInitializable
 {
     [SerializeField] private WaveManager waveManager;
 
@@ -16,7 +16,11 @@ public class SessionStateManager : MonoBehaviour, ILevelInitializable
     [SerializeField] private EventChannel playerWinEventChannel;
     [SerializeField] private EventChannel playerDefeatEventChannel;
 
-    private SessionState state = SessionState.Idle;
+    [Header("Pause Event")]
+    [SerializeField] private EventChannel pauseChannel;
+
+    public SessionState State { get; private set; } = SessionState.Idle;
+    public bool IsPaused { get; private set; } = false;
 
     private WaveData[] waves;
     private int currentWaveIndex = 0;
@@ -44,23 +48,40 @@ public class SessionStateManager : MonoBehaviour, ILevelInitializable
         waveManager.WaveCancelled -= Lose;
     }
 
+    public void Pause(bool pause)
+    {
+        if (State == SessionState.End)
+            return;
+
+        IsPaused = pause;
+        if (pause)
+        {
+            Time.timeScale = 0;
+            pauseChannel.Raise();
+        }
+        else
+        {
+            Time.timeScale = 1;
+        }
+    }
+
     private void ChangeStateToWave()
     {
-        if (state == SessionState.End)
+        if (State == SessionState.End)
             return;
 
         EnterWave();
         waveStartedChannel.Raise();
-        state = SessionState.Wave;
+        State = SessionState.Wave;
     }
 
     private void ChangeStateToIdle()
     {
-        if (state == SessionState.End)
+        if (State == SessionState.End)
             return;
 
         ExitWave();
-        state = SessionState.Idle;
+        State = SessionState.Idle;
     }
 
     private void EnterWave()
@@ -85,19 +106,21 @@ public class SessionStateManager : MonoBehaviour, ILevelInitializable
 
     private void Win()
     {
-        if (state == SessionState.End)
+        if (State == SessionState.End)
             return;
 
-        state = SessionState.End;
+        Pause(true);
+        State = SessionState.End;
         playerWinEventChannel.Raise();
     }
 
     private void Lose()
     {
-        if (state == SessionState.End)
+        if (State == SessionState.End)
             return;
 
-        state = SessionState.End;
+        Pause(true);
+        State = SessionState.End;
         playerDefeatEventChannel.Raise();
     }
 }

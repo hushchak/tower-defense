@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-    [SerializeField] private EventChannel playerWinEventChannel;
-    [SerializeField] private EventChannel playerDefeatEventChannel;
+    [SerializeField] private EventChannel playerWinChannel;
+    [SerializeField] private EventChannel playerDefeatChannel;
+    [SerializeField] private EventChannelBool endLevelChannel;
+
+    private LevelData levelData;
 
     public async void SetData(LevelDataSO data)
     {
@@ -40,15 +43,17 @@ public class LevelManager : MonoBehaviour
         if (UIInitializables.Length > 0)
             initializables.AddRange(UIInitializables);
 
+        levelData = GetLevelData(data);
         foreach (ILevelInitializable initializable in initializables)
         {
-            initializable.Initialize(GetLevelData(data));
+            initializable.Initialize(levelData);
         }
     }
 
     private LevelData GetLevelData(LevelDataSO dataSO)
     {
         return new LevelData(
+            nextUnlockableLevelIndex: dataSO.NextUnlockableLevelIndex,
             waves: dataSO.Waves,
             playerMaxHealth: dataSO.PlayerMaxHealth,
             playerStartMoney: dataSO.PlayerStartMoney,
@@ -65,25 +70,22 @@ public class LevelManager : MonoBehaviour
         return null;
     }
 
-    private void OnEnable()
-    {
-        playerWinEventChannel.Subscribe(Win);
-        playerDefeatEventChannel.Subscribe(Defeat);
-    }
+    private void OnEnable() => endLevelChannel.Subscribe(EndLevel);
+    private void OnDisable() => endLevelChannel.Unsubscribe(EndLevel);
 
-    private void OnDisable()
+    private async void EndLevel(bool unlockNextLevel)
     {
-        playerWinEventChannel.Unsubscribe(Win);
-        playerDefeatEventChannel.Unsubscribe(Defeat);
-    }
+        if (unlockNextLevel)
+        {
+            UnlockNextLevel();
+            Debug.Log("Level unlocked");
+        }
 
-    private async void Win()
-    {
-        Debug.Log("Player win");
         try
         {
             await SceneLoader.UnloadScene(SceneData.Tags.Level);
             await SceneLoader.UnloadScene(SceneData.Tags.LevelUI);
+            SessionStateManager.Instance.Pause(false);
             await SceneLoader.LoadScene(SceneData.Tags.Main, SceneData.Names.LevelMenu);
         }
         catch (Exception e)
@@ -92,18 +94,9 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    private async void Defeat()
+    private void UnlockNextLevel()
     {
-        Debug.Log("Player defeated");
-        try
-        {
-            await SceneLoader.UnloadScene(SceneData.Tags.Level);
-            await SceneLoader.UnloadScene(SceneData.Tags.LevelUI);
-            await SceneLoader.LoadScene(SceneData.Tags.Main, SceneData.Names.LevelMenu);
-        }
-        catch (Exception e)
-        {
-            Debug.LogError(e);
-        }
+        GameData data = SaveManager.GetDataFromCurrentSlot();
+        data.isLevelAvailable[levelData.NextUnlockableLevelIndex - 1] = true;
     }
 }

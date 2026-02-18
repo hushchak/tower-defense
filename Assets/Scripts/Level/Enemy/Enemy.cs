@@ -11,6 +11,8 @@ public class Enemy : MonoBehaviour
     private Path path;
     private int currentPoint;
 
+    public int GetHealth() => healthSystem.GetHealth();
+
     public void Setup(Path path)
     {
         this.path = path;
@@ -29,6 +31,9 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
+        if (SessionStateManager.Instance.IsPaused)
+            return;
+
         HandleMovement(Time.deltaTime);
     }
 
