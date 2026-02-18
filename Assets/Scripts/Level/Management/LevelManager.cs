@@ -97,6 +97,6 @@ public class LevelManager : MonoBehaviour
     private void UnlockNextLevel()
     {
         GameData data = SaveManager.GetDataFromCurrentSlot();
-        data.isLevelAvailable[levelData.NextUnlockableLevelIndex - 1] = true;
+        data.IsLevelAvailable[levelData.NextUnlockableLevelIndex - 1] = true;
     }
 }

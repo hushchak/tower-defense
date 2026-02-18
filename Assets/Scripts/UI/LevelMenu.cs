@@ -13,9 +13,9 @@ public class LevelMenu : MonoBehaviour
 
     private void InitializeButtons(GameData data)
     {
-        for (int i = 0; i < data.isLevelAvailable.Length; i++)
+        for (int i = 0; i < data.IsLevelAvailable.Length; i++)
         {
-            levelButtons[i].interactable = data.isLevelAvailable[i];
+            levelButtons[i].interactable = data.IsLevelAvailable[i];
         }
     }
 

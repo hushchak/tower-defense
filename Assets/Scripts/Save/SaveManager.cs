@@ -15,6 +15,8 @@ public static class SaveManager
     private static int levelAmount = 10;
     private static int defaultAvailableLevels = 1;
 
+    private static PreferencesData preferenceData;
+
     private static Dictionary<Slot, GameData> gameDataDictionary;
     private static Slot currentSlot = Slot.Empty;
 
@@ -23,21 +25,33 @@ public static class SaveManager
     {
         gameDataDictionary = new Dictionary<Slot, GameData>
         {
-            { Slot.Slot1, GetData(Slot.Slot1) },
-            { Slot.Slot2, GetData(Slot.Slot2) },
-            { Slot.Slot3, GetData(Slot.Slot3) }
+            { Slot.Slot1, ReadGameData(Slot.Slot1) },
+            { Slot.Slot2, ReadGameData(Slot.Slot2) },
+            { Slot.Slot3, ReadGameData(Slot.Slot3) }
         };
+        preferenceData = ReadPreferencesData();
 
         EventChannel applicationQuitChannel = Resources.Load<EventChannel>("Events/ApplicationQuitChannel");
         applicationQuitChannel.Subscribe(SaveData);
     }
 
-    private static GameData GetData(Slot slot)
+    #region Read
+    private static GameData ReadGameData(Slot slot)
     {
         try
         {
             string filePath = GetSlotPath(slot.ToString());
-            MakeSureSlotFileExists(filePath);
+            if (!IsFileExists(filePath))
+            {
+                File.WriteAllText(filePath, JsonUtility.ToJson(
+                    new GameData(
+                        levelAmount,
+                        defaultAvailableLevels
+                    ),
+                    true
+                ));
+            }
+
             MakeSureSlotFileInCorrectFormat(filePath);
 
             string json = File.ReadAllText(filePath);
@@ -51,18 +65,41 @@ public static class SaveManager
         return null;
     }
 
+    private static PreferencesData ReadPreferencesData()
+    {
+        try
+        {
+            string filePath = GetPreferencesPath();
+            if (!IsFileExists(filePath))
+            {
+                File.WriteAllText(filePath, JsonUtility.ToJson(
+                    new PreferencesData(
+                        1f,
+                        1f,
+                        1f
+                    ),
+                    true
+                ));
+            }
+
+            string json = File.ReadAllText(filePath);
+            return JsonUtility.FromJson<PreferencesData>(json);
+        }
+        catch (Exception e)
+        {
+            Debug.LogError(e);
+        }
+
+        return null;
+    }
+    #endregion
+    #region Save
     private static void SaveData()
     {
         try
         {
-            foreach (KeyValuePair<Slot, GameData> pair in gameDataDictionary)
-            {
-                string filePath = GetSlotPath(pair.Key.ToString());
-                MakeSureSlotFileExists(filePath);
-
-                string json = JsonUtility.ToJson(pair.Value, true);
-                File.WriteAllText(filePath, json);
-            }
+            SaveGameData();
+            SavePreferenceData();
         }
         catch (Exception e)
         {
@@ -70,23 +107,56 @@ public static class SaveManager
         }
     }
 
-    private static void MakeSureSlotFileExists(string slotFilePath)
+    private static void SaveGameData()
+    {
+        foreach (KeyValuePair<Slot, GameData> pair in gameDataDictionary)
+        {
+            string filePath = GetSlotPath(pair.Key.ToString());
+            if (!IsFileExists(filePath))
+            {
+                File.WriteAllText(filePath, JsonUtility.ToJson(
+                    new GameData(
+                        levelAmount,
+                        defaultAvailableLevels
+                    ),
+                    true
+                ));
+            }
+
+            string json = JsonUtility.ToJson(pair.Value, true);
+            File.WriteAllText(filePath, json);
+        }
+    }
+
+    private static void SavePreferenceData()
+    {
+        string filePath = GetPreferencesPath();
+        if (!IsFileExists(filePath))
+        {
+            File.WriteAllText(filePath, JsonUtility.ToJson(
+                new PreferencesData(
+                    1f,
+                    1f,
+                    1f
+                ),
+                true
+            ));
+        }
+
+        string json = JsonUtility.ToJson(preferenceData, true);
+        File.WriteAllText(filePath, json);
+    }
+    #endregion
+    #region File Handling
+
+    private static bool IsFileExists(string slotFilePath)
     {
         string directoryPath = System.IO.Path.GetDirectoryName(slotFilePath);
         if (!Directory.Exists(directoryPath))
         {
             Directory.CreateDirectory(directoryPath);
         }
-        if (!File.Exists(slotFilePath))
-        {
-            File.WriteAllText(slotFilePath, JsonUtility.ToJson(
-                new GameData(
-                    levelAmount,
-                    defaultAvailableLevels
-                ),
-                true
-            ));
-        }
+        return File.Exists(slotFilePath);
     }
 
     private static void MakeSureSlotFileInCorrectFormat(string slotFilePath)
@@ -97,13 +167,13 @@ public static class SaveManager
             GameData data = JsonUtility.FromJson<GameData>(json);
 
             int availableLevels = 0;
-            for (int i = 0; i < data.isLevelAvailable.Length; i++)
+            for (int i = 0; i < data.IsLevelAvailable.Length; i++)
             {
-                if (data.isLevelAvailable[i])
+                if (data.IsLevelAvailable[i])
                     availableLevels++;
             }
 
-            if (data.isLevelAvailable.Length != levelAmount || availableLevels < defaultAvailableLevels)
+            if (data.IsLevelAvailable.Length != levelAmount || availableLevels < defaultAvailableLevels)
             {
                 File.WriteAllText(slotFilePath, JsonUtility.ToJson(
                     new GameData(
@@ -125,11 +195,17 @@ public static class SaveManager
             ));
         }
     }
-
+    #endregion
+    #region Path
     private static string GetSlotPath(string slotName)
     {
         return System.IO.Path.Combine(Application.persistentDataPath, "DataSlots", slotName);
     }
+    private static string GetPreferencesPath()
+    {
+        return System.IO.Path.Combine(Application.persistentDataPath, "Preferences", "preferences.json");
+    }
+    #endregion
 
     public static GameData GetDataFromCurrentSlot()
     {
@@ -139,21 +215,11 @@ public static class SaveManager
         }
         return null;
     }
+    public static PreferencesData GetPreferencesData()
+    {
+        return preferenceData;
+    }
 
     public static void SetCurrentSlot(Slot slot) => currentSlot = slot;
     public static void EmptyCurrentSlot() => currentSlot = Slot.Empty;
-}
-
-public class GameData
-{
-    public bool[] isLevelAvailable;
-
-    public GameData(int levelCount, int defaultAvailableLevels)
-    {
-        isLevelAvailable = new bool[levelCount];
-        for (int i = 0; i < defaultAvailableLevels; i++)
-        {
-            isLevelAvailable[i] = true;
-        }
-    }
 }
