@@ -33,12 +33,20 @@ public class MenuController : MonoBehaviour
         }
     }
 
+    public Window GetCurrentWindow()
+    {
+        if (windows.Count < 1)
+            return null;
+
+        return windows.Peek();
+    }
+
     public void ForceOpen(Window window)
     {
         while (windows.Count > 0)
         {
             windows.Pop().Close();
         }
-        window.Open();
+        Open(window);
     }
 }

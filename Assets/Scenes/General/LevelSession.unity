@@ -119,86 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &575847800
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 575847801}
-  - component: {fileID: 575847803}
-  - component: {fileID: 575847802}
-  m_Layer: 0
-  m_Name: TowerPlacement
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &575847801
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 575847800}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 752246077}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &575847802
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 575847800}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78a9fd1bac9f64883b68cb18ecc73b0f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TowerPlacementSounds
-  towerSelector: {fileID: 575847803}
-  towerPlacedSound:
-    Clip: {fileID: 8300000, guid: 5d3278a9d506f4e4ca29ce1f74080c4d, type: 3}
-    Volume: 0.75
-    Pitch: 1
-    RandomPitch: 0
-  towerCantBePlacedSound:
-    Clip: {fileID: 8300000, guid: 0e955d44290ac45acb38cf2e23992eda, type: 3}
-    Volume: 1
-    Pitch: 1
-    RandomPitch: 0
-  towerCardSelectedSound:
-    Clip: {fileID: 8300000, guid: eab304c0a5d4449918bab97259151c6d, type: 3}
-    Volume: 1
-    Pitch: 1
-    RandomPitch: 0
-  towerCardSelectionDeniedSound:
-    Clip: {fileID: 8300000, guid: 0e955d44290ac45acb38cf2e23992eda, type: 3}
-    Volume: 1
-    Pitch: 1
-    RandomPitch: 0
---- !u!114 &575847803
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 575847800}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b6c4f274b0b949c8ac3fe2e7d3b1edc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TowerSelector
-  triggerTowerPlacementChannel: {fileID: 11400000, guid: c82fb9a59de1843978d636e0f3912bbc, type: 2}
-  pauseChannel: {fileID: 11400000, guid: baa03e93056834a0fa860b0968ecc4bd, type: 2}
 --- !u!1 &752246075
 GameObject:
   m_ObjectHideFlags: 0
@@ -211,7 +131,6 @@ GameObject:
   - component: {fileID: 752246076}
   - component: {fileID: 752246079}
   - component: {fileID: 752246078}
-  - component: {fileID: 752246080}
   m_Layer: 0
   m_Name: Level Root
   m_TagString: Untagged
@@ -249,7 +168,6 @@ Transform:
   m_Children:
   - {fileID: 1156325082}
   - {fileID: 953470096}
-  - {fileID: 575847801}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &752246078
@@ -284,18 +202,6 @@ MonoBehaviour:
   playerWinEventChannel: {fileID: 11400000, guid: 3976826bdf95b4beeaa70ffaa4d07faf, type: 2}
   playerDefeatEventChannel: {fileID: 11400000, guid: d4bbec1afa3c04b3b83ba04bc53ce439, type: 2}
   pauseChannel: {fileID: 11400000, guid: baa03e93056834a0fa860b0968ecc4bd, type: 2}
---- !u!114 &752246080
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 752246075}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32529a73261ae4860b8b4f83de11a14c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PauseLevel
 --- !u!1 &953470095
 GameObject:
   m_ObjectHideFlags: 0
@@ -307,6 +213,7 @@ GameObject:
   - component: {fileID: 953470096}
   - component: {fileID: 953470099}
   - component: {fileID: 953470097}
+  - component: {fileID: 953470100}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -424,6 +331,22 @@ Camera:
   m_OcclusionCulling: 0
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &953470100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 953470095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56666c5a40171f54783dd416a44f42bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.Physics2DRaycaster
+  m_EventMask:
+    serializedVersion: 2
+    m_Bits: 128
+  m_MaxRayIntersections: 0
 --- !u!1 &1156325081
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,6 +14,9 @@ public class Tower : MonoBehaviour
     private float waitTime = 0;
     private GameObjectPool projectilePool;
 
+    // TODO: normal cost getting
+    public int GetCost() => 100;
+
     private void Update()
     {
         if (SessionStateManager.Instance.IsPaused)
