@@ -8,6 +8,11 @@ public class TowerPointWindow : Window
 
     public override void Open()
     {
+        Debug.LogError("Invalid open method");
+    }
+
+    public void Open(TowerPointClickData data)
+    {
         menuObject.SetActive(true);
     }
 

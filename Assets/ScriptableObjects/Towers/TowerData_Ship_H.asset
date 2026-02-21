@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c46c0a5292b6d416480a3da830380392, type: 3}
   m_Name: TowerData_Ship_H
   m_EditorClassIdentifier: Assembly-CSharp::TowerData
+  <Prefab>k__BackingField: {fileID: 2520383852209036637, guid: 4d4d14104630b4efaa18674056068dde, type: 3}
+  <Name>k__BackingField: Ship_H
+  <Sprite>k__BackingField: {fileID: 1596889407484746599, guid: b05c13837557545e387535a112bef92a, type: 3}
+  <Cost>k__BackingField: 120
   <TargetStrategy>k__BackingField: {fileID: 11400000, guid: b7cf516b93070498e9d1594f743241ba, type: 2}
   <EnemyMask>k__BackingField:
     serializedVersion: 2

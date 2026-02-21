@@ -45,7 +45,7 @@ public static class SceneLoader
         List<T> gameObjects = new();
         foreach (GameObject rootObject in rooObjects)
         {
-            T[] objects = rootObject.GetComponentsInChildren<T>();
+            T[] objects = rootObject.GetComponentsInChildren<T>(true);
             if (objects.Length > 0)
             {
                 gameObjects.AddRange(objects);

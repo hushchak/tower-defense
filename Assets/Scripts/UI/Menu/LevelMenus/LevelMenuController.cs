@@ -5,8 +5,8 @@ public class LevelMenuController : MonoBehaviour
     [Header("General")]
     [SerializeField] private MenuController menuController;
     [SerializeField] private Window emptyWindow;
-    [SerializeField] private Window towerPlacementWindow;
-    [SerializeField] private Window towerPointWindow;
+    [SerializeField] private TowerPlacementWindow towerPlacementWindow;
+    [SerializeField] private TowerPointWindow towerPointWindow;
     [SerializeField] private Window pauseMenuWindow;
     [SerializeField] private Window settingsMenuWindow;
     [SerializeField] private Window winWindow;
@@ -80,11 +80,13 @@ public class LevelMenuController : MonoBehaviour
 
         if (data.Tower == null)
         {
-            menuController.Open(towerPlacementWindow);
+            menuController.UnsafePush(towerPlacementWindow);
+            towerPlacementWindow.Open(data);
         }
         else
         {
-            menuController.Open(towerPointWindow);
+            menuController.UnsafePush(towerPointWindow);
+            towerPointWindow.Open(data);
         }
     }
 

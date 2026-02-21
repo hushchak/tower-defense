@@ -20,8 +20,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8713214eb44fc4927b88465b8e3bbda2, type: 2}
   - {fileID: 11400000, guid: 049f497e218b443449724112f0da4cae, type: 2}
   <Towers>k__BackingField:
-  - {fileID: 11400000, guid: 71db5650bcfeb469195cbf8d21e203dd, type: 2}
-  - {fileID: 11400000, guid: 9c67889d1cb5448e68cc86be656646b9, type: 2}
-  - {fileID: 11400000, guid: a08bddcf6f1394dc7ab87a2af4531070, type: 2}
+  - {fileID: 11400000, guid: a3dbcde48e67942008887dd2208104c5, type: 2}
+  - {fileID: 11400000, guid: 5788e1be182cf4f7788819bd2295f534, type: 2}
+  - {fileID: 11400000, guid: eb89c627e772643f898cc93dca420d87, type: 2}
   <PlayerMaxHealth>k__BackingField: 50
   <PlayerStartMoney>k__BackingField: 98

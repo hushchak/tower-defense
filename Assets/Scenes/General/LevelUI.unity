@@ -2441,6 +2441,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TowerPlacementWindow
   menuObject: {fileID: 587125703}
+  controller: {fileID: 1221449473}
+  cardParent: {fileID: 1489641412}
+  cardPrefab: {fileID: 8184610765830324956, guid: 98ddbc658e27345f69cc6914d334fb1e, type: 3}
 --- !u!1 &614478667
 GameObject:
   m_ObjectHideFlags: 0
@@ -5299,6 +5302,7 @@ RectTransform:
   m_Children:
   - {fileID: 229690318}
   - {fileID: 2068664301}
+  - {fileID: 1489641412}
   m_Father: {fileID: 587125704}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -5691,6 +5695,66 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1426901257}
   m_CullTransparentMesh: 1
+--- !u!1 &1489641411
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1489641412}
+  - component: {fileID: 1489641413}
+  m_Layer: 5
+  m_Name: Card Parent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1489641412
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1489641411}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1276018395}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -40}
+  m_SizeDelta: {x: 1200, y: 700}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1489641413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1489641411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.GridLayoutGroup
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 4
+  m_StartCorner: 0
+  m_StartAxis: 0
+  m_CellSize: {x: 350, y: 300}
+  m_Spacing: {x: 10, y: 10}
+  m_Constraint: 0
+  m_ConstraintCount: 2
 --- !u!1 &1564929165
 GameObject:
   m_ObjectHideFlags: 0
@@ -7040,9 +7104,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1973735582}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df39ced0fa10444da939f910d113789d, type: 3}
+  m_Script: {fileID: 11500000, guid: 7d15d4e0630424975a581616e59634ae, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TowerPlacementWindow
+  m_EditorClassIdentifier: Assembly-CSharp::TowerPointWindow
   menuObject: {fileID: 1973735582}
 --- !u!1 &1996272003
 GameObject:

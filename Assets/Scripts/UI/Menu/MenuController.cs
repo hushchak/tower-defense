@@ -49,4 +49,14 @@ public class MenuController : MonoBehaviour
         }
         Open(window);
     }
+
+    public void UnsafePush(Window window)
+    {
+        if (windows.Count >= 1)
+        {
+            windows.Peek().Close();
+        }
+
+        windows.Push(window);
+    }
 }
