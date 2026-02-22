@@ -6,11 +6,6 @@ public class Tower : MonoBehaviour
     [SerializeField] private TowerData data;
     [SerializeField] private Transform poolTransform;
 
-    [Space]
-    [SerializeField] private GameObject spriteObject;
-    [SerializeField] private float rotationSpeed = 200f;
-    [SerializeField] private float angleOffset;
-
     private TowerModel model;
 
     private float waitTime = 0;
@@ -38,11 +33,6 @@ public class Tower : MonoBehaviour
         }
         else
         {
-            RotateToTarget(model.CurrentTowerStrategy.GetTarget(
-                GetEnemiesInRadius(model.Radius, data.EnemyMask),
-                transform.position,
-                data
-            ));
             waitTime -= Time.deltaTime;
         }
     }
@@ -94,28 +84,13 @@ public class Tower : MonoBehaviour
     }
 #endregion
 
-    private void RotateToTarget(Enemy enemy)
-    {
-        if (enemy == null)
-            return;
-
-        Vector2 direction = (enemy.transform.position - transform.position).normalized;
-        float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + angleOffset;
-
-        Quaternion targetRotation = Quaternion.Euler(0, 0, targetAngle);
-        spriteObject.transform.rotation = Quaternion.RotateTowards(
-            spriteObject.transform.rotation,
-            targetRotation,
-            rotationSpeed * Time.deltaTime
-        );
-    }
-
     private void OnDrawGizmos()
     {
         if (data == null)
             return;
 
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(transform.position, model.Radius);
+        if (data.LevelData != null)
+            Gizmos.DrawWireSphere(transform.position, model == null ? data.LevelData[0].Radius : model.Radius);
     }
 }
