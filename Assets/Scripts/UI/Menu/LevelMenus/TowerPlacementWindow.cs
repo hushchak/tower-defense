@@ -75,7 +75,7 @@ public class TowerPlacementWindow : Window, ILevelInitializable
 
     private void OnCardClick(TowerData data)
     {
-        if (PlayerMoney.Instance.TryDecreaseMoney(data.Cost))
+        if (PlayerMoney.Instance.TryDecreaseMoney(data.BuildCost))
         {
             UnsubscribeToCards();
             PlaceTower(data);

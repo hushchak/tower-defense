@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3317211945032187114}
   - component: {fileID: 2822061287532093483}
   m_Layer: 0
-  m_Name: Projectile (Ship_H)
+  m_Name: Projectile (Ship_H) (Level1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

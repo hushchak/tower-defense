@@ -25,7 +25,6 @@ public class Grid<T>
 
     public void SetValue(int x, int y, T value)
     {
-        // TODO: Error
         if (!CoordinatesValid(x, y))
         {
             Debug.Log("You are trying to set grid value that does not exist");

@@ -15,16 +15,39 @@ MonoBehaviour:
   <Prefab>k__BackingField: {fileID: 6318460370772357028, guid: 3501ed01444774b10bdacaa57ab248b1, type: 3}
   <Name>k__BackingField: Ship_E
   <Sprite>k__BackingField: {fileID: 1041961173196304559, guid: cc66fdce1ebff489486e586e93cc22cb, type: 3}
-  <Cost>k__BackingField: 50
-  <TargetStrategy>k__BackingField: {fileID: 11400000, guid: 4b6e24e089c18436e84e53dec9eac407, type: 2}
+  <BuildCost>k__BackingField: 50
+  <DefaultTargetStrategy>k__BackingField: {fileID: 11400000, guid: 4b6e24e089c18436e84e53dec9eac407, type: 2}
   <EnemyMask>k__BackingField:
     serializedVersion: 2
     m_Bits: 64
-  <ProjectilePrefab>k__BackingField: {fileID: 4823629901092003825, guid: 15d440b2103fc42c99f48a2aa64e38b8, type: 3}
-  <Frequency>k__BackingField: 0.75
-  <Radius>k__BackingField: 1.5
-  <ShotSound>k__BackingField:
-    Clip: {fileID: 8300000, guid: f03784baca1c54704925744759a37557, type: 3}
-    Volume: 1
-    Pitch: 1
-    RandomPitch: 0
+  <LevelData>k__BackingField:
+  - <ProjectilePrefab>k__BackingField: {fileID: 4823629901092003825, guid: 15d440b2103fc42c99f48a2aa64e38b8, type: 3}
+    <Frequency>k__BackingField: 0.75
+    <Radius>k__BackingField: 3
+    <ShotSound>k__BackingField:
+      Clip: {fileID: 8300000, guid: f03784baca1c54704925744759a37557, type: 3}
+      Volume: 1
+      Pitch: 1
+      RandomPitch: 0
+    <UpgradeCost>k__BackingField: 0
+    <SellCost>k__BackingField: 25
+  - <ProjectilePrefab>k__BackingField: {fileID: 4823629901092003825, guid: 4242e5af5cb57416395ec177daaf2e6e, type: 3}
+    <Frequency>k__BackingField: 0.65
+    <Radius>k__BackingField: 3
+    <ShotSound>k__BackingField:
+      Clip: {fileID: 8300000, guid: f03784baca1c54704925744759a37557, type: 3}
+      Volume: 1
+      Pitch: 1
+      RandomPitch: 0
+    <UpgradeCost>k__BackingField: 40
+    <SellCost>k__BackingField: 45
+  - <ProjectilePrefab>k__BackingField: {fileID: 4823629901092003825, guid: 35414b9b668374bceab7366a0bde066c, type: 3}
+    <Frequency>k__BackingField: 0.55
+    <Radius>k__BackingField: 3
+    <ShotSound>k__BackingField:
+      Clip: {fileID: 8300000, guid: f03784baca1c54704925744759a37557, type: 3}
+      Volume: 1
+      Pitch: 1
+      RandomPitch: 0
+    <UpgradeCost>k__BackingField: 50
+    <SellCost>k__BackingField: 80

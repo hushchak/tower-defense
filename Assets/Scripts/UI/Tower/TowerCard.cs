@@ -19,7 +19,7 @@ public class TowerCard : MonoBehaviour, IPointerClickHandler
         this.data = data;
 
         SetName(data.Name);
-        SetCost(data.Cost);
+        SetCost(data.BuildCost);
         SetImage(data.Sprite);
     }
 

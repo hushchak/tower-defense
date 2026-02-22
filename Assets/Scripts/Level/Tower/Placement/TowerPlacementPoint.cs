@@ -29,7 +29,13 @@ public class TowerPlacementPoint : MonoBehaviour, IPointerClickHandler
             return false;
         }
 
-        cost = tower.GetCost();
+        cost = tower.GetSellCost();
+        Destroy(tower.gameObject);
+        tower = null;
         return true;
     }
+
+    public bool CanUpgradeTower() => tower != null ? tower.CanUpgrade() : false;
+    public bool EnoughMoneyForUpgrade() => tower != null ? tower.EnoughMoneyForUpgrade() : false;
+    public bool TryUpgradeTower(out int cost) => tower.TryUpgrade(out cost);
 }

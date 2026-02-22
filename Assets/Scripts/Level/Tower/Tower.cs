@@ -11,11 +11,21 @@ public class Tower : MonoBehaviour
     [SerializeField] private float rotationSpeed = 200f;
     [SerializeField] private float angleOffset;
 
+    private TowerModel model;
+
     private float waitTime = 0;
     private GameObjectPool projectilePool;
 
-    // TODO: normal cost getting
-    public int GetCost() => 100;
+    public int GetSellCost() => model.SellCost;
+    public int GetUpgradeCost() => model.GetUpgradeCost();
+    public bool CanUpgrade() => model.CanUpgrade();
+    public bool EnoughMoneyForUpgrade() => model.EnoughMoneyForUpgrade();
+    public bool TryUpgrade(out int cost) => model.TryUpgrade(out cost);
+
+    private void Awake()
+    {
+        model = new TowerModel(data);
+    }
 
     private void Update()
     {
@@ -28,8 +38,8 @@ public class Tower : MonoBehaviour
         }
         else
         {
-            RotateToTarget(data.TargetStrategy.GetTarget(
-                GetEnemiesInRadius(data.Radius, data.EnemyMask),
+            RotateToTarget(model.CurrentTowerStrategy.GetTarget(
+                GetEnemiesInRadius(model.Radius, data.EnemyMask),
                 transform.position,
                 data
             ));
@@ -37,33 +47,18 @@ public class Tower : MonoBehaviour
         }
     }
 
-    private void RotateToTarget(Enemy enemy)
-    {
-        if (enemy == null)
-            return;
-
-        Vector2 direction = (enemy.transform.position - transform.position).normalized;
-        float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + angleOffset;
-
-        Quaternion targetRotation = Quaternion.Euler(0, 0, targetAngle);
-        spriteObject.transform.rotation = Quaternion.RotateTowards(
-            spriteObject.transform.rotation,
-            targetRotation,
-            rotationSpeed * Time.deltaTime
-        );
-    }
-
+#region Shooting
     private void Shoot()
     {
-        Enemy target = data.TargetStrategy.GetTarget(
-            GetEnemiesInRadius(data.Radius, data.EnemyMask),
+        Enemy target = model.CurrentTowerStrategy.GetTarget(
+            GetEnemiesInRadius(model.Radius, data.EnemyMask),
             transform.position,
             data
         );
         if (target != null)
         {
             SpawnProjectile(target);
-            waitTime = data.Frequency;
+            waitTime = model.Frequency;
         }
     }
 
@@ -88,14 +83,31 @@ public class Tower : MonoBehaviour
         projectile.Setup(target);
 
         projectile.gameObject.SetActive(true);
-        Audio.Play(data.ShotSound);
+        Audio.Play(model.ShotSound);
     }
 
     private GameObject GetProjectile()
     {
         if (projectilePool == null)
-            projectilePool = new GameObjectPool(data.ProjectilePrefab, poolTransform, 1);
+            projectilePool = new GameObjectPool(model.ProjectilePrefab, poolTransform, 1);
         return projectilePool.GetObject();
+    }
+#endregion
+
+    private void RotateToTarget(Enemy enemy)
+    {
+        if (enemy == null)
+            return;
+
+        Vector2 direction = (enemy.transform.position - transform.position).normalized;
+        float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + angleOffset;
+
+        Quaternion targetRotation = Quaternion.Euler(0, 0, targetAngle);
+        spriteObject.transform.rotation = Quaternion.RotateTowards(
+            spriteObject.transform.rotation,
+            targetRotation,
+            rotationSpeed * Time.deltaTime
+        );
     }
 
     private void OnDrawGizmos()
@@ -104,6 +116,6 @@ public class Tower : MonoBehaviour
             return;
 
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(transform.position, data.Radius);
+        Gizmos.DrawWireSphere(transform.position, model.Radius);
     }
 }
