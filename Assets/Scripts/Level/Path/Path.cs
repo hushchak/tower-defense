@@ -9,6 +9,7 @@ public class Path : MonoBehaviour
     public Transform GetPoint(int index) => points[index];
     public int GetPointsCount => points.Length;
 
+#if UNITY_EDITOR
     private void OnDrawGizmos()
     {
         if (!gizmos)
@@ -31,4 +32,5 @@ public class Path : MonoBehaviour
             }
         }
     }
+#endif
 }
