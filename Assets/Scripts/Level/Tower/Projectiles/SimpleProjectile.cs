@@ -7,16 +7,11 @@ public class SimpleProjectile : Projectile
     [SerializeField] private float radius;
     [SerializeField] private LayerMask enemyMask;
 
-    [Space]
-    [SerializeField] private GameObject spriteObject;
-    [SerializeField] private float angleOffset;
-
     Vector2 targetPosition;
 
     public override void Setup(Enemy target)
     {
         targetPosition = target.transform.position;
-        RotateSpriteToMovement();
     }
 
     private void Update()
@@ -35,16 +30,6 @@ public class SimpleProjectile : Projectile
     private void MoveToTarget(float delta)
     {
         transform.position = Vector2.MoveTowards(transform.position, targetPosition, speed * delta);
-    }
-
-    private void RotateSpriteToMovement()
-    {
-        if (spriteObject == null)
-            return;
-
-        Vector2 direction = (targetPosition - (Vector2)transform.position).normalized;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        spriteObject.transform.rotation = Quaternion.Euler(0, 0, angle + angleOffset);
     }
 
 

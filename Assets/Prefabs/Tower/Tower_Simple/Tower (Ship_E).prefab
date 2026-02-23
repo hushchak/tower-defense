@@ -48,9 +48,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Tower
   data: {fileID: 11400000, guid: a3dbcde48e67942008887dd2208104c5, type: 2}
   poolTransform: {fileID: 129453563363891891}
-  spriteObject: {fileID: 5538487699221617641}
-  rotationSpeed: 200
-  angleOffset: -90
 --- !u!1 &5508234405378621269
 GameObject:
   m_ObjectHideFlags: 0
@@ -164,7 +161,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -6164834272971422932, guid: a72a0fd6fa9d94cd1b0d62502b957298, type: 3}
-  m_Color: {r: 1, g: 0.4732954, b: 0.28773582, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

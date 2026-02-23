@@ -113,7 +113,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 744693739, guid: a72a0fd6fa9d94cd1b0d62502b957298, type: 3}
-  m_Color: {r: 0.42175877, g: 0.8396226, b: 0.1782218, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -170,6 +170,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Tower
   data: {fileID: 11400000, guid: 5788e1be182cf4f7788819bd2295f534, type: 2}
   poolTransform: {fileID: 6603465056940700203}
-  spriteObject: {fileID: 5754894612618473389}
-  rotationSpeed: 200
-  angleOffset: -90

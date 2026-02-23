@@ -137,10 +137,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SimpleProjectile
   speed: 15
-  damage: 3
+  damage: 25
   radius: 0.1
   enemyMask:
     serializedVersion: 2
     m_Bits: 64
-  spriteObject: {fileID: 7315196006520960287}
-  angleOffset: -90
