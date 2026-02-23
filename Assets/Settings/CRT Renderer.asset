@@ -20,7 +20,7 @@ MonoBehaviour:
   injectionPoint: 550
   preset: 6
   pixelResolutionX: 320
-  pixelResolutionY: 200
+  pixelResolutionY: 180
   screenBend: 2.78
   screenOverscan: 0
   vignetteSize: 5.7
@@ -43,7 +43,7 @@ MonoBehaviour:
   red: 1
   green: 1
   blue: 1
-  chromaticAberration: 1
+  chromaticAberration: 0
   redOffset: {x: 0.1, y: 0.1}
   blueOffset: {x: 0, y: -0.14}
   greenOffset: {x: -0.1, y: 0.1}

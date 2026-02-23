@@ -4,6 +4,8 @@ public class Bootstrap : MonoBehaviour
 {
     private async void Start()
     {
+        Application.targetFrameRate = 30;
+
         await SceneLoader.LoadScene(SceneData.Tags.Main, SceneData.Names.MainMenu);
 
         PreferencesData preferences = SaveManager.GetPreferencesData();
