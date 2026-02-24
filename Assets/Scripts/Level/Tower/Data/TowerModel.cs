@@ -5,7 +5,7 @@ public class TowerModel
     private TowerLevelData[] levelData;
     public int currentLevel;
 
-    public GameObject ProjectilePrefab { get; private set; }
+    public ProjectileData ProjectileData { get; private set; }
     public float Frequency { get; private set; }
     public float Radius { get; private set; }
     public Sound ShotSound { get; private set; }
@@ -51,7 +51,7 @@ public class TowerModel
 
         currentLevel = level;
 
-        ProjectilePrefab = levelData[currentLevel].ProjectilePrefab;
+        ProjectileData = levelData[currentLevel].ProjectileData;
         Frequency = levelData[currentLevel].Frequency;
         Radius = levelData[currentLevel].Radius;
         ShotSound = levelData[currentLevel].ShotSound;

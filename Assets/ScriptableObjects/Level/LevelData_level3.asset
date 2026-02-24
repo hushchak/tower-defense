@@ -19,5 +19,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 71db5650bcfeb469195cbf8d21e203dd, type: 2}
   - {fileID: 11400000, guid: 9c67889d1cb5448e68cc86be656646b9, type: 2}
   - {fileID: 11400000, guid: a08bddcf6f1394dc7ab87a2af4531070, type: 2}
-  <PlayerMaxHealth>k__BackingField: 45
-  <PlayerStartMoney>k__BackingField: 135
+  <PlayerMaxHealth>k__BackingField: 50
+  <PlayerStartMoney>k__BackingField: 120

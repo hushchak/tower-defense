@@ -13,41 +13,60 @@ MonoBehaviour:
   m_Name: TowerData_Fast
   m_EditorClassIdentifier: Assembly-CSharp::TowerData
   <Prefab>k__BackingField: {fileID: 7028939957279701690, guid: 9e98ddd71ec5f4e33b3d11da28d628bb, type: 3}
-  <Name>k__BackingField: Ship_F
+  <ProjectilePrefab>k__BackingField: {fileID: 5256224442845618735, guid: 1c326639cb7f2484eab22d963b2d477b, type: 3}
+  <Name>k__BackingField: Fast Tower
   <Sprite>k__BackingField: {fileID: 744693739, guid: a72a0fd6fa9d94cd1b0d62502b957298, type: 3}
-  <BuildCost>k__BackingField: 200
+  <BuildCost>k__BackingField: 70
   <DefaultTargetStrategy>k__BackingField: {fileID: 11400000, guid: 4b6e24e089c18436e84e53dec9eac407, type: 2}
   <EnemyMask>k__BackingField:
     serializedVersion: 2
     m_Bits: 64
   <LevelData>k__BackingField:
-  - <ProjectilePrefab>k__BackingField: {fileID: 8806095511225460953, guid: 1c326639cb7f2484eab22d963b2d477b, type: 3}
-    <Frequency>k__BackingField: 0.25
-    <Radius>k__BackingField: 2
+  - <ProjectileData>k__BackingField:
+      <Damage>k__BackingField: 8
+      <Speed>k__BackingField: 10
+      <Radius>k__BackingField: 0.1
+      <EnemyMask>k__BackingField:
+        serializedVersion: 2
+        m_Bits: 64
+    <Frequency>k__BackingField: 0.33
+    <Radius>k__BackingField: 1.4
     <ShotSound>k__BackingField:
       Clip: {fileID: 8300000, guid: f03784baca1c54704925744759a37557, type: 3}
       Volume: 1
       Pitch: 1
       RandomPitch: 0
     <UpgradeCost>k__BackingField: 0
-    <SellCost>k__BackingField: 100
-  - <ProjectilePrefab>k__BackingField: {fileID: 8806095511225460953, guid: a9aa3cc722d3a4114847752848cfa710, type: 3}
-    <Frequency>k__BackingField: 0.2
-    <Radius>k__BackingField: 2.25
+    <SellCost>k__BackingField: 35
+  - <ProjectileData>k__BackingField:
+      <Damage>k__BackingField: 12
+      <Speed>k__BackingField: 12.5
+      <Radius>k__BackingField: 0.1
+      <EnemyMask>k__BackingField:
+        serializedVersion: 2
+        m_Bits: 64
+    <Frequency>k__BackingField: 0.28
+    <Radius>k__BackingField: 1.5
     <ShotSound>k__BackingField:
       Clip: {fileID: 8300000, guid: f03784baca1c54704925744759a37557, type: 3}
       Volume: 1
       Pitch: 1
       RandomPitch: 0
-    <UpgradeCost>k__BackingField: 150
-    <SellCost>k__BackingField: 200
-  - <ProjectilePrefab>k__BackingField: {fileID: 8806095511225460953, guid: b571f113abebf47ca99e518eaf605632, type: 3}
-    <Frequency>k__BackingField: 0.15
-    <Radius>k__BackingField: 2.5
+    <UpgradeCost>k__BackingField: 100
+    <SellCost>k__BackingField: 70
+  - <ProjectileData>k__BackingField:
+      <Damage>k__BackingField: 18
+      <Speed>k__BackingField: 15
+      <Radius>k__BackingField: 0.1
+      <EnemyMask>k__BackingField:
+        serializedVersion: 2
+        m_Bits: 0
+    <Frequency>k__BackingField: 0.25
+    <Radius>k__BackingField: 1.6
     <ShotSound>k__BackingField:
       Clip: {fileID: 8300000, guid: f03784baca1c54704925744759a37557, type: 3}
       Volume: 1
       Pitch: 1
       RandomPitch: 0
-    <UpgradeCost>k__BackingField: 200
-    <SellCost>k__BackingField: 300
+    <UpgradeCost>k__BackingField: 140
+    <SellCost>k__BackingField: 120

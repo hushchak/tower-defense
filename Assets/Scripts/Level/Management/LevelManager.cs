@@ -83,9 +83,10 @@ public class LevelManager : MonoBehaviour
 
         try
         {
+            SessionStateManager.Instance.ReturnTimeScaleToDefault();
+            SessionStateManager.Instance.Pause(false);
             await SceneLoader.UnloadScene(SceneData.Tags.Level);
             await SceneLoader.UnloadScene(SceneData.Tags.LevelUI);
-            SessionStateManager.Instance.Pause(false);
             await SceneLoader.LoadScene(SceneData.Tags.Main, SceneData.Names.LevelMenu);
         }
         catch (Exception e)

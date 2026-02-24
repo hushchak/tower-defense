@@ -12,7 +12,7 @@ public static class SaveManager
         Slot2 = 2,
         Slot3 = 3
     }
-    private static int levelAmount = 10;
+    private static int levelAmount = 5;
     private static int defaultAvailableLevels = 1;
 
     private static PreferencesData preferenceData;

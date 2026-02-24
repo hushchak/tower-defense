@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class LevelMenuController : MonoBehaviour
+public class GameMenuController : MonoBehaviour
 {
     [Header("General")]
     [SerializeField] private MenuController menuController;

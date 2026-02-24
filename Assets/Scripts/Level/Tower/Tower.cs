@@ -70,7 +70,7 @@ public class Tower : MonoBehaviour
     {
         Projectile projectile = GetProjectile().GetComponent<Projectile>();
         projectile.transform.position = transform.position;
-        projectile.Setup(target);
+        projectile.Setup(model.ProjectileData, target);
 
         projectile.gameObject.SetActive(true);
         Audio.Play(model.ShotSound);
@@ -79,7 +79,7 @@ public class Tower : MonoBehaviour
     private GameObject GetProjectile()
     {
         if (projectilePool == null)
-            projectilePool = new GameObjectPool(model.ProjectilePrefab, poolTransform, 1);
+            projectilePool = new GameObjectPool(data.ProjectilePrefab.gameObject, poolTransform, 1);
         return projectilePool.GetObject();
     }
 #endregion

@@ -5,6 +5,7 @@ public class TowerData : ScriptableObject
 {
     [Header("Information")]
     [field: SerializeField] public Tower Prefab { get; private set; }
+    [field: SerializeField] public Projectile ProjectilePrefab { get; private set; }
     [field: Space]
     [field: SerializeField] public string Name { get; private set; }
     [field: SerializeField] public Sprite Sprite { get; private set; }

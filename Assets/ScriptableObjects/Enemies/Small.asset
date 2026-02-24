@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 031c0d06475de488da1eba55931fb2ff, type: 3}
   m_Name: Small
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
-  <HealthPoints>k__BackingField: 50
-  <Speed>k__BackingField: 1.5
-  <Damage>k__BackingField: 10
-  <MoneyValue>k__BackingField: 20
+  <HealthPoints>k__BackingField: 60
+  <Speed>k__BackingField: 0.9
+  <Damage>k__BackingField: 4
+  <MoneyValue>k__BackingField: 3
   <Prefab>k__BackingField: {fileID: 7788935672129084177, guid: 27847358b52624a09ab86e7b2e6ebca5, type: 3}
   <HurtSound>k__BackingField:
     Clip: {fileID: 8300000, guid: cc115fae0ab8b4c8eac98bfd40684f77, type: 3}

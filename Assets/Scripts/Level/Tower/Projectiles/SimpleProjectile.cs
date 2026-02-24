@@ -2,15 +2,11 @@ using UnityEngine;
 
 public class SimpleProjectile : Projectile
 {
-    [SerializeField] private float speed;
-    [SerializeField] private int damage;
-    [SerializeField] private float radius;
-    [SerializeField] private LayerMask enemyMask;
-
     Vector2 targetPosition;
 
-    public override void Setup(Enemy target)
+    public override void Setup(ProjectileData data, Enemy target)
     {
+        base.Setup(data, target);
         targetPosition = target.transform.position;
     }
 
@@ -29,19 +25,19 @@ public class SimpleProjectile : Projectile
 
     private void MoveToTarget(float delta)
     {
-        transform.position = Vector2.MoveTowards(transform.position, targetPosition, speed * delta);
+        transform.position = Vector2.MoveTowards(transform.position, targetPosition, Data.Speed * delta);
     }
 
 
     private void CheckEnemies()
     {
-        Collider2D enemy = Physics2D.OverlapCircle(transform.position, radius, enemyMask);
+        Collider2D enemy = Physics2D.OverlapCircle(transform.position, Data.Radius, Data.EnemyMask);
 
         if (enemy != null)
         {
             if (enemy.gameObject.TryGetComponent(out IDamageable damageable))
             {
-                damageable.ApplyDamage(damage);
+                damageable.ApplyDamage(Data.Damage);
                 TargetReached();
             }
         }

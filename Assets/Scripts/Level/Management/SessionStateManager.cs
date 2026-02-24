@@ -27,9 +27,12 @@ public class SessionStateManager : Singleton<SessionStateManager>, ILevelInitial
     private CancellationTokenSource playerDeathCts;
     private CancellationToken playerDeathCancellationToken;
 
+    private float currentNormalTimeScale;
+
     public void Initialize(LevelData data)
     {
         waves = data.Waves;
+        currentNormalTimeScale = 1;
     }
 
     private void OnEnable()
@@ -61,9 +64,21 @@ public class SessionStateManager : Singleton<SessionStateManager>, ILevelInitial
         }
         else
         {
-            Time.timeScale = 1;
+            Time.timeScale = currentNormalTimeScale;
         }
     }
+
+    public void ChangeTimeScale(int scale)
+    {
+        if (scale <= 0)
+            return;
+
+        currentNormalTimeScale = scale;
+        if (!IsPaused)
+            Time.timeScale = currentNormalTimeScale;
+    }
+
+    public void ReturnTimeScaleToDefault() => ChangeTimeScale(1);
 
     private void ChangeStateToWave()
     {
