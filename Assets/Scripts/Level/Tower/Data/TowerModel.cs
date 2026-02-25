@@ -5,23 +5,29 @@ public class TowerModel
     private TowerLevelData[] levelData;
     public int currentLevel;
 
+    public string Name { get; private set; }
+    public Sprite Preview { get; private set; }
+
     public ProjectileData ProjectileData { get; private set; }
     public float Frequency { get; private set; }
     public float Radius { get; private set; }
     public Sound ShotSound { get; private set; }
     public int SellCost { get; private set; }
 
-    public TowerTargerStrategy CurrentTowerStrategy { get; private set; }
+    public TowerTargetStrategy CurrentTowerStrategy { get; private set; }
 
     public TowerModel(TowerData data)
     {
         levelData = data.LevelData;
 
+        Name = data.Name;
+        Preview = data.Sprite;
+
         SetLevel(0);
         SetTowerStrategy(data.DefaultTargetStrategy);
     }
 
-    public void SetTowerStrategy(TowerTargerStrategy strategy) => CurrentTowerStrategy = strategy;
+    public void SetTowerStrategy(TowerTargetStrategy strategy) => CurrentTowerStrategy = strategy;
     public bool CanUpgrade() => currentLevel < levelData.Length - 1;
     public bool EnoughMoneyForUpgrade() => PlayerMoney.Instance.GetMoney() >= GetUpgradeCost();
     public int GetUpgradeCost() => CanUpgrade() ? levelData[currentLevel + 1].UpgradeCost : 0;

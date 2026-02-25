@@ -50,6 +50,7 @@ public class Enemy : MonoBehaviour
 
         if (Vector2.Distance(transform.position, path.GetPoint(currentPoint).position) < 0.1f)
         {
+            transform.position = path.GetPoint(currentPoint).position;
             currentPoint++;
             if (currentPoint >= path.GetPointsCount)
             {

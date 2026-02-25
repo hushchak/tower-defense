@@ -12,7 +12,7 @@ public class TowerData : ScriptableObject
     [field: SerializeField] public int BuildCost { get; private set; }
 
     [field: Header("Shooting")]
-    [field: SerializeField] public TowerTargerStrategy DefaultTargetStrategy { get; private set; }
+    [field: SerializeField] public TowerTargetStrategy DefaultTargetStrategy { get; private set; }
     [field: SerializeField] public LayerMask EnemyMask { get; private set; }
 
     [field: Header("Levels")]

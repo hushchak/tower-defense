@@ -124,7 +124,7 @@ public class SessionStateManager : Singleton<SessionStateManager>, ILevelInitial
         if (State == SessionState.End)
             return;
 
-        Pause(true);
+        ReturnTimeScaleToDefault();
         State = SessionState.End;
         playerWinEventChannel.Raise();
     }
@@ -134,7 +134,7 @@ public class SessionStateManager : Singleton<SessionStateManager>, ILevelInitial
         if (State == SessionState.End)
             return;
 
-        Pause(true);
+        ReturnTimeScaleToDefault();
         State = SessionState.End;
         playerDefeatEventChannel.Raise();
     }

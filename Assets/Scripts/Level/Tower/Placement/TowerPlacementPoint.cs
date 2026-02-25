@@ -38,4 +38,6 @@ public class TowerPlacementPoint : MonoBehaviour, IPointerClickHandler
     public bool CanUpgradeTower() => tower != null ? tower.CanUpgrade() : false;
     public bool EnoughMoneyForUpgrade() => tower != null ? tower.EnoughMoneyForUpgrade() : false;
     public bool TryUpgradeTower(out int cost) => tower.TryUpgrade(out cost);
+
+    public void SetTowerStrategy(TowerTargetStrategy strategy) => tower.SetTowerStrategy(strategy);
 }

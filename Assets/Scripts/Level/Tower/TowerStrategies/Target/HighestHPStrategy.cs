@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Tower/Tower Strategies/Target/HP Highest", fileName = "HPHighestStrategy")]
-public class HighestHPStrategy : TowerTargerStrategy
+public class HighestHPStrategy : TowerTargetStrategy
 {
     public override Enemy GetTarget(Enemy[] enemies, Vector2 towerPosition, TowerData data)
     {

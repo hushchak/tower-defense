@@ -11,11 +11,15 @@ public class Tower : MonoBehaviour
     private float waitTime = 0;
     private GameObjectPool projectilePool;
 
+    public string GetName() => model.Name;
+    public Sprite GetPreviewImage() => model.Preview;
     public int GetSellCost() => model.SellCost;
     public int GetUpgradeCost() => model.GetUpgradeCost();
     public bool CanUpgrade() => model.CanUpgrade();
     public bool EnoughMoneyForUpgrade() => model.EnoughMoneyForUpgrade();
     public bool TryUpgrade(out int cost) => model.TryUpgrade(out cost);
+    public void SetTowerStrategy(TowerTargetStrategy strategy) => model.SetTowerStrategy(strategy);
+    public TowerTargetStrategy GetTowerStrategy() => model.CurrentTowerStrategy;
 
     private void Awake()
     {

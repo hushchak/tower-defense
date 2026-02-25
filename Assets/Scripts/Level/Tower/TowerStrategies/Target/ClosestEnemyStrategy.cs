@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Tower/Tower Strategies/Target/Closest Enemy", fileName = "ClosestEnemyStrategy")]
-public class ClosestEnemyStrategy : TowerTargerStrategy
+public class ClosestEnemyStrategy : TowerTargetStrategy
 {
     public override Enemy GetTarget(Enemy[] enemies, Vector2 towerPosition, TowerData data)
     {
