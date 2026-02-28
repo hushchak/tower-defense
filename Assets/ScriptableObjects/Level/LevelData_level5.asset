@@ -14,10 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LevelDataSO
   <LevelSceneName>k__BackingField: Level05
   <NextUnlockableLevelIndex>k__BackingField: 5
-  <Waves>k__BackingField: []
+  <Waves>k__BackingField:
+  - {fileID: 11400000, guid: 11221c8c3cb5d47cb89150c882a52fdf, type: 2}
+  - {fileID: 11400000, guid: 3da707d7634164c57a77ae8cc92f1a19, type: 2}
+  - {fileID: 11400000, guid: 80cd2642f8d274ff199f80607ae82fd1, type: 2}
+  - {fileID: 11400000, guid: fc2558cca25974c9ab0c281452a1f368, type: 2}
+  - {fileID: 11400000, guid: e4a6e417df04f48adbb429212f66a341, type: 2}
   <Towers>k__BackingField:
-  - {fileID: 11400000, guid: 71db5650bcfeb469195cbf8d21e203dd, type: 2}
-  - {fileID: 11400000, guid: 9c67889d1cb5448e68cc86be656646b9, type: 2}
-  - {fileID: 11400000, guid: a08bddcf6f1394dc7ab87a2af4531070, type: 2}
+  - {fileID: 11400000, guid: a3dbcde48e67942008887dd2208104c5, type: 2}
+  - {fileID: 11400000, guid: 5788e1be182cf4f7788819bd2295f534, type: 2}
+  - {fileID: 11400000, guid: eb89c627e772643f898cc93dca420d87, type: 2}
   <PlayerMaxHealth>k__BackingField: 50
-  <PlayerStartMoney>k__BackingField: 120
+  <PlayerStartMoney>k__BackingField: 300

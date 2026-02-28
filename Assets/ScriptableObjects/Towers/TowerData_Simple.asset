@@ -52,7 +52,7 @@ MonoBehaviour:
       Volume: 1
       Pitch: 1
       RandomPitch: 0
-    <UpgradeCost>k__BackingField: 75
+    <UpgradeCost>k__BackingField: 40
     <SellCost>k__BackingField: 50
   - <ProjectileData>k__BackingField:
       <Damage>k__BackingField: 50
@@ -68,5 +68,5 @@ MonoBehaviour:
       Volume: 1
       Pitch: 1
       RandomPitch: 0
-    <UpgradeCost>k__BackingField: 110
+    <UpgradeCost>k__BackingField: 65
     <SellCost>k__BackingField: 200
