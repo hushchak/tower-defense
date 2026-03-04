@@ -86,7 +86,6 @@ public class SessionStateManager : Singleton<SessionStateManager>, ILevelInitial
             return;
 
         EnterWave();
-        waveStartedChannel.Raise();
         State = SessionState.Wave;
     }
 
